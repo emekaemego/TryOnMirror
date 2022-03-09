@@ -28,4 +28,4 @@ After a user successfully uploads a photo, the system tries detecting the face a
 
 The user is aided with a visual guide for the image calibration, as shown in the images below. They drag the red dots on to adjust that particular region.
 
-!["Facial feature detected regions"](/TryOnMirror.UI.Web/assets/images/tryon-mirror-facial-features.jpg?raw=true)
+!["Facial feature detected regions"](/TryOnMirror.UI.Web/assets/images/tryon-mirror-collage.jpg?raw=true)
