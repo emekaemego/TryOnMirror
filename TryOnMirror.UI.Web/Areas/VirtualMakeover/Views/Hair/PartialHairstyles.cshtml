@@ -1,0 +1,16 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model PagedList.StaticPagedList<string>
+
+<ul class="hairstyles">
+    @foreach(var m in Model)
+    {
+        <li>
+            <a href="@Url.Action("try-on-hairstyle", "hair",new{fn=m, area="VirtualMakeover"})" class="try-on">
+                <img src="@Html.HairstyleImage(m, true)" />
+            </a>
+        </li>
+    }
+</ul>
+
+@Html.PagedListPager(Model, p => Url.Action("index", new { p, s = Request.QueryString["s"], pgr=true }), 
+PagedListRenderOptions.MinimalWithPageCountText)

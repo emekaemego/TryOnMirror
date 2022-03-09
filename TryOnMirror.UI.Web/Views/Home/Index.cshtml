@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "TryOn Mirror";
+}
+@section styles
+{
+    @*@Styles.Render("~/assets/css/foundation-icons")*@
+}
+
+<div class="marketing_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="promo-message">
+                    <h2>Give Yourself a Virtual Makeover!</h2>
+                    <p>TryOn Mirror offers users an advanced virtual makeover technology; making the online makeover 
+                        experience more like a beauty counter and salon experience than ever before. TryOn Mirror enables 
+                        you to virtually try-on different cosmetic brands, accessories, hairstyles and colors on your photo.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary" href="@Url.Action("index","home", new{Area="VirtualMakeover"})">
+                                  Try it Yourself
+                              </a> &nbsp; 
+                        <a class="btn btn-warning" href="@Url.Action("contact")">License</a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="promo-screenshot">
+                    <img src="@Url.Content("~/assets/images/screenshots.png")" class="img-responsive" style="margin-top: 50px;"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        
+<div class="pitch">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <h1>Kill the Competition - <span>Virtual Makeover for your Business.</span></h1>
+                <p>
+                    Are you interested in offering virtual try-on capabilities to your customers? TryOn Mirror will change the 
+                    way your brand interacts with your customers. We can provide virtual makeover technology for your brand 
+                    that works on web, mobile and in-store.
+                </p>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <a href="@Url.Action("contact")" class="btn btn-lg btn-success">Contact us Now</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row services">
+        <div class="col-sm-4">
+            <div class="col-sm-3">
+                <i class="glyphicon glyphicon-briefcase pull-right"></i>
+            </div>
+            <div class="col-sm-9 item">
+                <h4>for your Brand!</h4>
+                <p>Interested in offering virtual try-on capabilities to your customers? We provide a realistic try-on technology 
+                    for hair,  makeup and fashion accessories that works on Web, Mobile and in-store.</p>
+                <p><a class="btn btn-primary btn-sm" href="@Url.Action("contact")">License &rarr;</a></p>
+            </div>
+        </div>
+                    
+        <div class="col-sm-4">
+            <div class="col-sm-3">
+                <i class="glyphicon glyphicon-star pull-right"></i>
+            </div>
+            <div class="col-sm-9 item">
+                <h4>for your Salon!</h4>
+                <p>Interested in offering virtual try-on capabilities to your customers? TryOn Mirror virtual 
+                    makeover technology empowers you as a hairstylist to infuse the confidence in your customer.
+                </p>
+                <p><a class="btn btn-primary btn-sm" href="@Url.Action("index","salon")">List your Salon &rarr;</a></p>
+            </div>
+        </div>
+                    
+        <div class="col-sm-4">
+            <div class="col-sm-3">
+                <i class="glyphicon glyphicon-heart pull-right"></i>
+            </div>
+            <div class="col-sm-9 item">
+                <h4>for Yourself!</h4>
+                <p>Want to try on a new look? Our virtual makeover tool lets you try-on celebrity hairstyles, change 
+                    your hair color, or experiment with new makeup trends before you commit.</p>
+                <p>
+                    <a class="btn btn-primary btn-sm" href="@Url.Action("index","home",new{Area="VirtualMakeover"})">
+                        Try it Now &rarr;
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

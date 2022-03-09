@@ -1,0 +1,14 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model IEnumerable<SymaCord.TryOnMirror.Entities.Glass>
+
+<ul class="glasses">
+    @foreach(var m in Model)
+    {
+        <li>
+            <a href="@Url.Action("try-on-glass","eye",new{fn=m.FileName, cat=m.CategoryId, area="VirtualMakeover"})"
+               class="retrace">
+                <img src="@Html.EyeWearImage(m.FileName, true)" />
+            </a>
+        </li>
+    }
+</ul>

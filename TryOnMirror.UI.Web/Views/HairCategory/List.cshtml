@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.HairCategory>
+
+@{
+    ViewBag.Title = "Hair Categories";
+}
+
+<div class="box width-65-percent float-left">
+    <h1>Hair Categories</h1>
+    
+    <ul id="hair-categories">
+        @foreach(var m in Model)
+        {
+            @Html.Partial("PartialCategory", m)
+        }
+    </ul>
+</div>
+
+<div class="box float-right paddin-top20">
+    <ul class="vertical-list no-underline">
+        <li><a href="@Url.Action("add","haircategory")" data-modal="modal">
+                <span class="btn btn-mini btn-primary"><i class="icon-plus-3"></i></span> New category
+            </a></li>
+    </ul>
+</div>

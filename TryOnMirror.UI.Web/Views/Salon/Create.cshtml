@@ -1,0 +1,17 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.NewSalonModel
+
+@{
+    ViewBag.Title = "Create Salon";
+}
+
+<hgroup class="title" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #999;">
+    <h1 class="title">Create Salon</h1>
+</hgroup>
+
+
+ @Html.Partial("PartialCreateSalon", Model)
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.Salon>
+
+@foreach(var m in Model)
+{
+    <li><a href="@Url.Action("index", "salon", new {area = "", id = m.Hook})" style="overflow: hidden;">
+            <img src="@Url.Content("~/assets/images/avatar.png")" class="float-left" width="20" height="30"
+                style="padding-right: 5px;"/> 
+            @m.SalonName
+        </a>
+    </li>
+}

@@ -1,0 +1,143 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model SymaCord.TryOnMirror.UI.Web.Areas.Calibration.Models.EditHairstyleModel
+
+@{
+    ViewBag.Title = "Edit Hairstyle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    @Styles.Render("~/assets/css/jcrop")
+
+    <style type="text/css">
+        #imageZone{margin-left: 200px; margin-bottom: 15px;}
+        /*#imageZone img{ max-height: 600px;max-width: 800px;}*/
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/assets/scripts/vm-edit")
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var fileUploader = $('input[name="ImageFile"]');
+            var imageZone = $('#imageZone');
+
+            $('#changeThumbnail').click(function (e) {
+                e.preventDefault();
+                fileUploader.click();
+            });
+
+            fileUploader.change(function () {
+                imageZone.html('Processing image, please wait ...');
+                //var form = $(this).parents('form:first');
+                $('#thumbImageForm').submit();
+            });
+        });
+
+        var resizeImage = function(img) {
+
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext("2d");
+
+            var maxWidth = (img.width > 800) ? 800 : img.width;
+            var maxHeight = (img.height > 600) ? 600 * (600 / 800) : img.height;
+
+            var ratio = 1;
+
+            if (img.height > maxHeight) {
+                ratio = maxHeight / img.height;
+            } else if (img.width > maxWidth) {
+                ratio = maxWidth / img.width;
+            }
+
+            var w = img.width * ratio;
+            var h = img.height * ratio;
+
+            canvas.width = w;
+            canvas.height = h;
+        };
+        
+        var applyJcrop = function (img) {
+            var jcrop_api;
+
+            $(img).Jcrop({
+                    onChange: applyJCropCoords,
+                    onSelect: applyJCropCoords,
+                    //onRelease: clearCoords,
+                    aspectRatio: 95 / 120
+                }, function () {
+                    jcrop_api = this;
+                });
+        };
+        
+        function applyJCropCoords(c) {
+            $('#X').val(Math.floor(c.x));
+            $('#Y').val(Math.floor(c.y));
+            $('#W').val(Math.floor(c.w));
+            $('#H').val(Math.floor(c.h));
+        }
+
+        function clearCoords() {
+            $('input#X, input#Y, input#W, input#H').val('');
+        }
+    </script>
+}
+
+<div class="title-wrapper">
+    <div class="container">
+        <h1>Edit Hairstyle</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <form action="@Url.Action("new-thumb","hair",new{id=Model.Id})" method="POST" id="thumbImageForm" 
+                enctype="multipart/form-data">
+        <div class="form-group">
+            <img src="@Html.HairstyleImage(Model.Id, true)" id="thumb"/>
+            <a href="#" class="btn btn-sm btn-primary" id="changeThumbnail">Change Thumbnail</a>
+            <input type="file" name="ImageFile" class="hide" data-url="@Url.Action("new-thumb","hair",new{fn=Model.Id})"/>
+        </div>
+    </form>
+
+    @using (Html.BeginForm("edit", "hair", FormMethod.Post, new { role="form", id="coords", data_form_type="edit"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x=>x.Id)
+        @Html.HiddenFor(x=>x.X)
+        @Html.HiddenFor(x=>x.Y)
+        @Html.HiddenFor(x=>x.W)
+        @Html.HiddenFor(x=>x.H)
+
+        <div id="imageZone"></div>
+
+        <div class="form-group clearfix">
+            @Html.LabelFor(x=>x.Title, new{@class="control-label"})
+            @Html.TextBoxFor(m => m.Title, new{placeholder="Hairstyle title", @class="form-control col-sm-6"})
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(x=>x.ProductUrl, new{@class="control-label"})
+            @Html.TextBoxFor(m => m.ProductUrl, new{placeholder="product web address", @class="form-control col-sm-6"})
+            @Html.ValidationMessageFor(m => m.ProductUrl)
+        </div>
+                
+        <div class="form-group">
+            @Html.LabelFor(x=>x.BrandId, new{@class="control-label"})
+            @Html.DropDownListFor(m => m.BrandId, (SelectList)ViewBag.Brands, "Select brand...", new{Class="form-control"})
+            @Html.ValidationMessageFor(m => m.BrandId)
+        </div>
+        
+        <div class="form-group" style="margin-top: 10px;">
+            <input type="submit" class="btn btn-sm btn-default" value="Save"/>
+        </div>
+    }
+
+        </div>
+    </div>
+</div>

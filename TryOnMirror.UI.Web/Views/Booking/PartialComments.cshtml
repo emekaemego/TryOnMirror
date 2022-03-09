@@ -1,0 +1,21 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model IEnumerable<SymaCord.TryOnMirror.Entities.Comment>
+
+@{
+    int currentUserId = ViewBag.CurrentUserId;
+}
+
+@foreach(var m in Model)
+{
+    <li class="@((m.UserId == currentUserId)? "out": "in")">
+        <img class="avatar" src="@Url.Content("~/assets/images/avatar.png")" alt="">
+        <div class="message">
+            <span class="arrow"></span>
+            <a class="name" href="#">@m.UserProfile.UserName</a>
+            <span class="datetime">@Html.Timeago(m.DateCreated)</span>
+            <span class="body">
+                @m.Message
+            </span>
+        </div>
+    </li>
+}

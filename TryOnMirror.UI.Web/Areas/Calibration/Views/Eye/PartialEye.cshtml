@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.Glass>
+
+@*<div id="eyesContainer">*@ 
+    <ul class="sub-menu">
+        <li><a href="#eyeglasses" class="first">Eyeglasses</a></li>
+        <li><a href="#sunglasses">Sunglasses</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+    </ul>
+    
+    <div id="eyeglasses" data-url="@Url.Action("eyeglasses","eye")">
+        @Html.Partial("PartialEyeglasses", Model)
+    </div>
+<div id="sunglasses" data-url="@Url.Action("sunglasses","eye")"></div>
+<div id="contacts" data-url="@Url.Action("contact-lenses","eye")"></div>
+@*</div>*@

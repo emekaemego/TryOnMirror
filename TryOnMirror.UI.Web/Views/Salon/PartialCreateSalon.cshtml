@@ -1,0 +1,45 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.NewSalonModel
+
+
+@using (Html.BeginForm("create", "salon", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="control-group">
+        @Html.LabelFor(x => x.SalonName, new {@class = "control-label"})
+        <div class="controls">
+            @Html.TextBoxFor(x => x.SalonName, new {placeholder = "Salon name"})
+            @Html.ValidationMessageFor(x => x.SalonName)
+        </div>
+    </div>
+    <h3>Salon Location</h3>
+    <div class="control-group">
+        @*<span class="help-block">Specify your Salon's address</span>*@
+        @Html.LabelFor(x => x.Address.AddressLine1, new {@class = "control-label"})
+        <div class="controls">
+            @Html.TextBoxFor(x => x.Address.AddressLine1, new {placeholder = "Address", @class = "span5"})
+            @Html.ValidationMessageFor(x => x.Address.AddressLine1)
+        </div>
+    </div>
+
+    <div class="controls controls-row">
+        <p style="display: block; overflow: hidden;">
+            @Html.TextBoxFor(x => x.Address.City, new {@class = "span2", placeholder = "City"})
+            @Html.TextBoxFor(x => x.Address.State, new {@class = "span2", placeholder = "State"})
+        </p>
+
+        <p style="display: block; padding-top: 0; margin-top: 0;">
+            @Html.ValidationMessageFor(x => x.Address.City) <br />
+            @Html.ValidationMessageFor(x => x.Address.State)
+        </p>
+    </div>
+
+    <br/>
+    
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Create Salon</button>
+        </div>
+    </div>
+}

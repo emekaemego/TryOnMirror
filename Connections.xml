@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+  <connectionStrings>
+    <SalonMakeoverEntities>
+    metadata="res:"//*/Entities.SalonMakeover.csdl|res://*/Entities.SalonMakeover.ssdl|res://*/Entities.SalonMakeover.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\sqlexpress;initial catalog=SalonMakeover;persist security info=True;user id=[dbUser];password=[yourPassword];multipleactiveresultsets=True;App=EntityFramework&quot;
+    </SalonMakeoverEntities>
+  </connectionStrings>

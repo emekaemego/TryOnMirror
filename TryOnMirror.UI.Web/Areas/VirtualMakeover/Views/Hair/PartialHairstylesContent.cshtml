@@ -1,0 +1,10 @@
+﻿@model PagedList.StaticPagedList<string>
+
+<div>
+    @Html.Partial("PartialHairstyles", Model)
+
+    <p class="controls-container">
+        <a href="#" class="btn btn-mini btn-primary remove-hairstyle" rel="hairstyle">Remove hairstyle</a>        
+        <a href="#" class="btn btn-mini btn-primary adjust-control">Adjust hair</a>
+    </p>
+</div>

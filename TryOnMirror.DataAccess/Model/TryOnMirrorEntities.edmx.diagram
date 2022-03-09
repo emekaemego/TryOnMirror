@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9521951be0b4a1aa15b783326b03fb8" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="TryOnMirrorModel.CalibratedHair" Width="1.5" PointX="0.625" PointY="0.625" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.HairCategory" Width="1.5" PointX="3.625" PointY="2.125" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.OAuthMembership" Width="1.5" PointX="9.125" PointY="1.625" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Role" Width="1.5" PointX="11.5" PointY="1.875" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.UserProfile" Width="1.5" PointX="15" PointY="5.25" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_OAuthMemberships_UserProfiles" />
+        <AssociationConnector Association="TryOnMirrorModel.CalibratedHairCategories" />
+        <AssociationConnector Association="TryOnMirrorModel.UsersInRoles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Membership" Width="1.5" PointX="6.5" PointY="2.25" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Memberships_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.TracedPhoto" Width="2" PointX="9.25" PointY="4.625" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_TracedPhotos_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Hairstyle" Width="1.5" PointX="4.875" PointY="3.875" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Hairstyles_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.ContactLens" Width="1.5" PointX="7.5" PointY="8.5" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_ContactLenses_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.GlassCategory" Width="1.5" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Glass" Width="1.5" PointX="2.375" PointY="4.375" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Glasses_GlassCategories" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Glasses_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Address" Width="1.5" PointX="0.5" PointY="9.25" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Salon" Width="1.5" PointX="5.5" PointY="9.25" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Addresses_UserProfiles" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Salons_Addresses" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Salons_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.HairstyleBooking" Width="1.875" PointX="12.25" PointY="8.25" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_HairstyleBookings_Salons" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_HairstyleBookings_UserProfiles" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Comment" Width="1.5" PointX="7.875" PointY="12" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.CommentType" Width="1.5" PointX="10.25" PointY="12" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Comments_CommentTypes" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Comments_UserProfiles" />
+        <AssociationConnector Association="TryOnMirrorModel.HairstyleBookingComments" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.BookingStatus" Width="1.5" PointX="5.2597846674079936" PointY="0.42690135558457176" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_HairstyleBookings_BookingStatuses" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_HairstyleBookings_CancelledByUserId" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.SharedMakeover" Width="1.5" PointX="3.25" PointY="10.125" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.HairColor" Width="1.5" PointX="0.625" PointY="12.625" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.Brand" Width="1.5" PointX="4.875" PointY="13.875" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Glasses_Brands" />
+        <AssociationConnector Association="TryOnMirrorModel.FK_Hairstyles_Brands" />
+        <EntityTypeShape EntityType="TryOnMirrorModel.ItemCategory" Width="1.5" PointX="6.75" PointY="18.75" />
+        <AssociationConnector Association="TryOnMirrorModel.ItemCategoryBrands" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

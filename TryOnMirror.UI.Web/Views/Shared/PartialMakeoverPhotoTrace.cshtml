@@ -1,0 +1,58 @@
+﻿
+<ul class="retrace-container">
+    <li class="face-trace">
+        <h3>Trace Face</h3>
+
+        <img src="@Url.Content("~/assets/images/trace-tip-face.jpg")" alt="face trace" class="img-responsive" />
+    
+        <div class="description"></div>
+    </li>
+    
+@*    <li class="eyes-trace">
+        <h3>Trace Eyes</h3>
+
+        <img src="@Url.Content("~/assets/images/trace-tip-eyes.jpg")"  class="img-responsive" alt="eyes trace"/>
+    
+        <div class="description"></div>
+    </li>*@
+    
+    <li class="eyeballs-trace">
+        <h3>Trace Eyes</h3>
+
+        <img src="@Url.Content("~/assets/images/trace-tip-eyeballs.jpg")" id="imgEyeballs" class="img-responsive" 
+            alt="trace eyeballs" />
+        <img src="@Url.Content("~/assets/images/trace-tip-eyes.jpg")" id="imgEyes"  class="bury img-responsive" 
+            alt="eyes trace"/>
+
+        <div class="description">
+            <label class="radio">
+                <input type="radio" name="eyeTraceSwitch" id="eyeTraceSwitchEyeballs" value="eyeballs" checked>
+                <span>Eyeballs</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="eyeTraceSwitch" id="eyeTraceSwitchEyes" value="eyes">
+                <span>Eyes</span>
+            </label>
+        </div>
+    </li>
+    
+@*    <li class="eyebrows-trace">
+        <h3>Trace Eyebrows</h3>
+
+        <img src="" />
+    
+        <div class="description"></div>
+    </li>*@
+    
+    <li class="glasses-trace">
+        <h3>Trace Glasses</h3>
+
+        <img src="@Url.Content("~/assets/images/trace-tip-glasses.jpg")" class="img-responsive" alt="trace glasses" />
+        <div class="description"></div>
+    </li>
+    
+    <li class="controls">
+        <a href="#" class="btn btn-xs btn-success save-trace"><i class="glyphicon glyphicon-floppy-save"></i> Save</a>        
+        <a href="#" class="btn btn-danger btn-xs cancel">Close</a>
+    </li>
+</ul>

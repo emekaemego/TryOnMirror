@@ -1,0 +1,62 @@
+﻿<div id="autoTrace">
+
+    <!-- Image element for face in square goes here -->
+    <img src="@Url.Content("~/assets/images/trace-tip-face-rect.jpg")" alt="face tip" class="img-responsive"/>
+                
+    <p>
+        Is your face inside the square?
+    </p>
+    <p>
+        <a href="#" class="btn btn-primary btn-xs confirm-btn" rel="yes">Yes</a> 
+        <a href="#" class="btn btn-primary btn-xs confirm-btn no" rel="no">No</a>
+    </p>
+</div>
+
+<ul id="wizard" class="bury">
+    @*0*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-left-eye-anchor.jpg")" id="manualAnchor" alt="trace tip"
+                   class="img-responsive"/>
+              <p id="anchorDescription">Click the left edge of your left eye as shown above</p>
+          </li>
+    @*1*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-face.jpg")" class="img-responsive" alt="trace tip" />
+        <p>Face</p>
+          </li>
+    @*2*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-left-eye.jpg")" class="img-responsive" alt="trace tip" />
+              <p>Left eye</p>
+          </li>
+    @*3*@ <li>
+        <img src="@Url.Content("~/assets/images/trace-tip-right-eye.jpg")" class="img-responsive" alt="trace tip" />      
+              <p>Right eye</p>
+          </li>
+    @*4*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-eyeballs.jpg")" class="img-responsive" alt="trace tip" />
+              <p>Eyeballs</p>
+          </li>
+
+    @*5*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-eye-brows.jpg")" class="img-responsive" alt="trace tip" />
+              <p>Eye brows</p>
+          </li>
+
+    @*6*@ <li>
+              <img src="@Url.Content("~/assets/images/trace-tip-lips.jpg")" class="img-responsive" alt="trace tip" />
+              <p>Trace mouth</p>
+          </li>
+    @*7*@<li>
+             <img src="@Url.Content("~/assets/images/trace-tip-open-mouth.jpg")" class="img-responsive" alt="trace tip" />
+             <p>Is your mouth open?</p>
+             <p id="traceLipsOpen">
+                 <a href="#" class="btn btn-default btn-xs confirm-btn" rel="yes" >Yes</a> 
+                 <a href="#" class="btn btn-default btn-xs confirm-btn no" rel="no">No</a>
+             </p>
+         </li>
+    @*8*@<li>
+              <img src="@Url.Content("~/assets/images/trace-tip-open-lips.jpg")" class="img-responsive" alt="trace tip" />
+              <p>Open lips trace</p>
+          </li>
+    @*9*@<li>
+        Done
+    </li>
+</ul>

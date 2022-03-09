@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D6B7EE77-927B-483A-80B7-CC61F00BA64C}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SymaCord.TryOnMirror.UI.Web</RootNamespace>
+    <AssemblyName>TryOnMirror.UI.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\AForge.NET\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\AForge.NET\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\AForge.NET\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\Libs\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator">
+      <HintPath>..\..\Libs\castle\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\Libs\castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel">
+      <HintPath>..\..\Libs\castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\Libs\castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV, Version=2.4.2.1777, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\EmguCV\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util, Version=2.4.2.1777, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\EmguCV\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="HSLImageTint, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\HSLImageTint.dll</HintPath>
+    </Reference>
+    <Reference Include="Kaliko.ImageLibrary">
+      <HintPath>..\..\Libs\Kaliko.ImageLibrary-1_2_4\Kaliko.ImageLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.16.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.3.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\AutoMapperBootstrapper.cs" />
+    <Compile Include="Areas\Calibration\CalibrationAreaRegistration.cs" />
+    <Compile Include="Areas\Calibration\Controllers\EyeController.cs" />
+    <Compile Include="Areas\Calibration\Controllers\HairController.cs" />
+    <Compile Include="Areas\Calibration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Calibration\Models\EditHairstyleModel.cs" />
+    <Compile Include="Areas\Calibration\Models\NewContactLensModel.cs" />
+    <Compile Include="Areas\Calibration\Models\NewGlassModel.cs" />
+    <Compile Include="Areas\VirtualMakeover\Controllers\EyeController.cs" />
+    <Compile Include="Areas\VirtualMakeover\Controllers\HairController.cs" />
+    <Compile Include="Areas\VirtualMakeover\Controllers\HomeController.cs" />
+    <Compile Include="Areas\VirtualMakeover\Controllers\TraceController.cs" />
+    <Compile Include="Areas\VirtualMakeover\Models\NewTraceModel.cs" />
+    <Compile Include="Areas\VirtualMakeover\VirtualMakeoverAreaRegistration.cs" />
+    <Compile Include="ContractResolver\CamelCaseJsonSerializer.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\CalibratePhotoController.cs" />
+    <Compile Include="Controllers\HairCategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ModelController.cs" />
+    <Compile Include="Controllers\SalonController.cs" />
+    <Compile Include="Filters\ActionParameterFilterAttribute.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\BundleRelaxed.cs" />
+    <Compile Include="Utils\BundleVirtualPath.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\HtmlHelpers.cs" />
+    <Compile Include="Utils\Impl\EmailService.cs" />
+    <Compile Include="Utils\IEmailService.cs" />
+    <Compile Include="Utils\Impl\HairColoration.cs" />
+    <Compile Include="Utils\Impl\HSBColor.cs" />
+    <Compile Include="Utils\Membership\CustomMembershipProvider.cs" />
+    <Compile Include="Utils\Membership\CustomRoleProvider.cs" />
+    <Compile Include="Utils\ValidationAttributes\FileExtensionsAttribute.cs" />
+    <Compile Include="ViewModels\AccountModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Extension.cs" />
+    <Compile Include="App_Start\WindorControllerFactory.cs" />
+    <Compile Include="App_Start\WindsorActionInvoker.cs" />
+    <Compile Include="App_Start\WindsorBootstrapper.cs" />
+    <Compile Include="Utils\IWebContext.cs" />
+    <Compile Include="Utils\Impl\WebContext.cs" />
+    <Compile Include="ViewModels\AddressModel.cs" />
+    <Compile Include="ViewModels\BrandModel.cs" />
+    <Compile Include="ViewModels\CompleteMakeoverModel.cs" />
+    <Compile Include="ViewModels\ContactLensModel.cs" />
+    <Compile Include="ViewModels\ContactModel.cs" />
+    <Compile Include="ViewModels\DetectionFeature.cs" />
+    <Compile Include="ViewModels\HairHslColorModel.cs" />
+    <Compile Include="ViewModels\PhoneAndWebContactModel.cs" />
+    <Compile Include="ViewModels\EditSalonModel.cs" />
+    <Compile Include="ViewModels\GlassModel.cs" />
+    <Compile Include="ViewModels\HairCategoryModel.cs" />
+    <Compile Include="ViewModels\HairstyleModel.cs" />
+    <Compile Include="ViewModels\NewBookingCommentModel.cs" />
+    <Compile Include="ViewModels\NewHairstyleBookingModel.cs" />
+    <Compile Include="ViewModels\NewHairstyleModel.cs" />
+    <Compile Include="ViewModels\PhoneModel.cs" />
+    <Compile Include="ViewModels\NewSalonModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Photos\model-1.jpg" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\social-buttons-3.css" />
+    <Content Include="assets\css\yamm.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\css\general_foundicons.css" />
+    <Content Include="assets\css\global.css" />
+    <Content Include="assets\css\jquery.Jcrop\Jcrop.gif" />
+    <Content Include="assets\css\jquery.Jcrop\jquery.Jcrop.css" />
+    <Content Include="assets\css\PagedList.css" />
+    <Content Include="assets\css\social_foundicons.css" />
+    <Content Include="assets\css\vm.css" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\images\4.jpg" />
+    <Content Include="assets\images\ajax-loader.gif" />
+    <Content Include="assets\images\avatar.png" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\datepicker.css" />
+    <Content Include="assets\css\jquery.pnotify.default.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\images\bad-photo-01.jpg" />
+    <Content Include="assets\images\bad-photo-02.jpg" />
+    <Content Include="assets\images\breadcrumbs.png" />
+    <Content Include="assets\images\brushed-bg.png" />
+    <Content Include="assets\images\btn-create-makeover.png" />
+    <Content Include="assets\images\facebook.png" />
+    <Content Include="assets\images\good-photo-01.jpg" />
+    <Content Include="assets\images\googleplus.png" />
+    <Content Include="assets\images\bg-hair1.jpg" />
+    <Content Include="assets\images\hair-colors\0-0-0.15.jpg" />
+    <Content Include="assets\images\hair-colors\0-1-0.26.jpg" />
+    <Content Include="assets\images\hair-colors\11-0.28-0.32.jpg" />
+    <Content Include="assets\images\hair-colors\29-0.57-0.52.jpg" />
+    <Content Include="assets\images\hair-colors\30-0.38-0.51.jpg" />
+    <Content Include="assets\images\hair-colors\30-0.39-0.75.jpg" />
+    <Content Include="assets\images\hair-colors\31-0.42-0.97.jpg" />
+    <Content Include="assets\images\hair-colors\351-0.63-0.21.jpg" />
+    <Content Include="assets\images\linkedin.png" />
+    <Content Include="assets\images\makeover-share-header.png" />
+    <Content Include="assets\images\pintrest.png" />
+    <Content Include="assets\images\responsive.png" />
+    <Content Include="assets\images\screenshots.png" />
+    <Content Include="assets\images\shot.jpg" />
+    <Content Include="assets\images\glyphicons-halflings-white.png" />
+    <Content Include="assets\images\glyphicons-halflings.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\no-logo.png" />
+    <Content Include="assets\images\no-logo_t.png" />
+    <Content Include="assets\images\preloader-w8-cycle-black.gif" />
+    <Content Include="assets\images\preloader-w8-cycle-white.gif" />
+    <Content Include="assets\images\preloader-w8-line-black.gif" />
+    <Content Include="assets\images\preloader-w8-line-white.gif" />
+    <Content Include="assets\images\progress-indeterminate-dark.gif" />
+    <Content Include="assets\images\progress-indeterminate-light.gif" />
+    <Content Include="assets\images\progress-indeterminate-ring-dark-small.gif" />
+    <Content Include="assets\images\progress-indeterminate-ring-dark.gif" />
+    <Content Include="assets\images\progress-indeterminate-ring-light-small.gif" />
+    <Content Include="assets\images\progress-indeterminate-ring-light.gif" />
+    <Content Include="assets\images\rss.png" />
+    <Content Include="assets\images\trace-tip-adjust-manual-trace-anchors.jpg" />
+    <Content Include="assets\images\trace-tip-eyes.jpg" />
+    <Content Include="assets\images\trace-tip-face-rect.jpg" />
+    <Content Include="assets\images\trace-tip-face.jpg" />
+    <Content Include="assets\images\trace-tip-glasses.jpg" />
+    <Content Include="assets\images\trace-tip-left-eye-anchor.jpg" />
+    <Content Include="assets\images\trace-tip-eye-brows.jpg" />
+    <Content Include="assets\images\trace-tip-left-eye.jpg" />
+    <Content Include="assets\images\trace-tip-eyeballs.jpg" />
+    <Content Include="assets\images\trace-tip-lips.jpg" />
+    <Content Include="assets\images\trace-tip-mouth-left-anchor.jpg" />
+    <Content Include="assets\images\trace-tip-mouth-right-anchor.jpg" />
+    <Content Include="assets\images\trace-tip-nose-anchor.jpg" />
+    <Content Include="assets\images\trace-tip-open-lips.jpg" />
+    <Content Include="assets\images\trace-tip-open-mouth.jpg" />
+    <Content Include="assets\images\trace-tip-right-eye-anchor.jpg" />
+    <Content Include="assets\images\trace-tip-right-eye.jpg" />
+    <Content Include="assets\images\twitter.png" />
+    <Content Include="assets\images\bg-01.jpg" />
+    <Content Include="assets\images\youtube.png" />
+    <Content Include="assets\scripts\imagesloaded.js" />
+    <Content Include="assets\scripts\jquery-1.10.2.js" />
+    <Content Include="assets\scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="assets\scripts\jquery.blockUI.js" />
+    <Content Include="assets\scripts\jquery.Jcrop.js" />
+    <Content Include="assets\scripts\jquery.timeago.js" />
+    <Content Include="assets\scripts\kinetic-v4.5.5.js" />
+    <Content Include="assets\scripts\kinetic-v4.6.0.js" />
+    <Content Include="assets\scripts\bootstrap.js" />
+    <Content Include="assets\scripts\global.js" />
+    <Content Include="assets\scripts\jquery-ui-1.10.3.js" />
+    <Content Include="assets\scripts\jquery.bpopup.js" />
+    <Content Include="assets\scripts\jquery.easing.1.3.js" />
+    <Content Include="assets\scripts\jquery.fileupload.js" />
+    <Content Include="assets\scripts\jquery.form.js" />
+    <Content Include="assets\scripts\jquery.iframe-transport.js" />
+    <Content Include="Areas\Calibration\Views\Web.config" />
+    <Content Include="Areas\VirtualMakeover\Views\Web.config" />
+    <Content Include="assets\scripts\jquery.fileextensions-validation.js" />
+    <Content Include="Areas\VirtualMakeover\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Calibration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Calibration\Views\Home\Index.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Calibration\Views\Shared\PartialPhotoSection.cshtml" />
+    <Content Include="assets\scripts\overlay.js" />
+    <Content Include="assets\scripts\virtual.makeover.operations.js" />
+    <Content Include="assets\themes\smoothness\images\animated-overlay.gif" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\themes\smoothness\jquery-ui.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.accordion.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.all.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.autocomplete.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.base.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.button.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.core.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.datepicker.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.dialog.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.menu.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.progressbar.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.resizable.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.selectable.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.slider.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.spinner.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.tabs.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.theme.css" />
+    <Content Include="assets\themes\smoothness\jquery.ui.tooltip.css" />
+    <Content Include="assets\themes\smoothness\minified\images\animated-overlay.gif" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\themes\smoothness\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\themes\smoothness\minified\jquery-ui.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.accordion.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.button.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.core.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.dialog.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.menu.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.resizable.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.selectable.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.slider.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.spinner.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.tabs.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.theme.min.css" />
+    <Content Include="assets\themes\smoothness\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Views\Shared\PartialModelPhotos.cshtml" />
+    <Content Include="Areas\Calibration\Views\Hair\PartialHair.cshtml" />
+    <Content Include="Areas\Calibration\Views\Hair\PartialHairstylesContent.cshtml" />
+    <Content Include="Areas\Calibration\Views\Hair\PartialHairstyles.cshtml" />
+    <Content Include="Areas\Calibration\Views\Eye\PartialEye.cshtml" />
+    <Content Include="Areas\Calibration\Views\Eye\PartialGlasses.cshtml" />
+    <Content Include="Areas\Calibration\Views\Eye\PartialSunglasses.cshtml" />
+    <Content Include="Areas\Calibration\Views\Eye\PartialEyeglasses.cshtml" />
+    <Content Include="Areas\Calibration\Views\Eye\PartialContactLenses.cshtml" />
+    <Content Include="Views\Shared\PartialMakeoverPhotoTrace.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Eye\PartialContactLenses.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Eye\PartialEye.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Eye\PartialEyeglasses.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Eye\PartialGlasses.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Eye\PartialSunglasses.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Hair\PartialHair.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Hair\PartialHairstyles.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Hair\PartialHairstylesContent.cshtml" />
+    <Content Include="Areas\Calibration\Views\Hair\Edit.cshtml" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="Areas\VirtualMakeover\Views\Home\Shared.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Hair\PartialHairColors.cshtml" />
+    <None Include="assets\scripts\jquery.linq-vsdoc.js" />
+    <Content Include="assets\scripts\jquery.linq.js" />
+    <Content Include="assets\scripts\jquery.pnotify.js" />
+    <Content Include="assets\scripts\jquery.ui.widget.js" />
+    <Content Include="assets\scripts\jquery.unobtrusive-ajax.js" />
+    <None Include="assets\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="assets\scripts\jquery.validate.js" />
+    <Content Include="assets\scripts\jquery.validate.min.js" />
+    <Content Include="assets\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="assets\scripts\knockout-2.1.0.debug.js" />
+    <Content Include="assets\scripts\knockout-2.1.0.js" />
+    <Content Include="assets\scripts\modernizr-2.5.3.js" />
+    <Content Include="assets\scripts\virtual.makeover.js" />
+    <Content Include="assets\scripts\wizard.js" />
+    <Content Include="assets\scripts\_references.js" />
+    <Content Include="assets\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="assets\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\themes\base\jquery-ui.css" />
+    <Content Include="assets\themes\base\jquery.ui.accordion.css" />
+    <Content Include="assets\themes\base\jquery.ui.all.css" />
+    <Content Include="assets\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="assets\themes\base\jquery.ui.base.css" />
+    <Content Include="assets\themes\base\jquery.ui.button.css" />
+    <Content Include="assets\themes\base\jquery.ui.core.css" />
+    <Content Include="assets\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="assets\themes\base\jquery.ui.dialog.css" />
+    <Content Include="assets\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="assets\themes\base\jquery.ui.resizable.css" />
+    <Content Include="assets\themes\base\jquery.ui.selectable.css" />
+    <Content Include="assets\themes\base\jquery.ui.slider.css" />
+    <Content Include="assets\themes\base\jquery.ui.tabs.css" />
+    <Content Include="assets\themes\base\jquery.ui.theme.css" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="assets\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="bin\frontalface_haarcascade.xml" />
+    <Content Include="bin\haarcascade_mcs_lefteye.xml" />
+    <Content Include="bin\haarcascade_mcs_mouth.xml" />
+    <Content Include="bin\haarcascade_mcs_nose.xml" />
+    <Content Include="bin\haarcascade_mcs_righteye.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Signin.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\HairCategory\List.cshtml" />
+    <Content Include="Views\HairCategory\PartialAddEditHairCategory.cshtml" />
+    <Content Include="Views\HairCategory\PartialAddHairCategory.cshtml" />
+    <Content Include="Views\HairCategory\PartialCategory.cshtml" />
+    <Content Include="Views\CalibratePhoto\Index.cshtml" />
+    <Content Include="Views\Shared\PartialModelPhoto.cshtml" />
+    <Content Include="Views\Shared\PartialTraceWizard.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\PartialHeader.cshtml" />
+    <Content Include="Views\Shared\PartialFooter.cshtml" />
+    <Content Include="Views\Home\License.cshtml" />
+    <Content Include="Views\Shared\PartialPhoto.cshtml" />
+    <Content Include="Views\Shared\PartialItemAdjuster.cshtml" />
+    <Content Include="Areas\VirtualMakeover\Views\Shared\PartialPhotoSection.cshtml" />
+    <Content Include="Views\Salon\PartialCreateSalon.cshtml" />
+    <Content Include="Views\Salon\Create.cshtml" />
+    <Content Include="Views\Salon\Index.cshtml" />
+    <Content Include="Views\Shared\PartialUserNav.cshtml" />
+    <Content Include="Views\Shared\PartialMakeoverSalonList.cshtml" />
+    <Content Include="Views\Shared\PartialNewHairstyleBooking.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Booking\PartialHairstyleBookings.cshtml" />
+    <Content Include="Views\Booking\Detail.cshtml" />
+    <Content Include="Views\Booking\PartialCommentForm.cshtml" />
+    <Content Include="Views\Booking\PartialComment.cshtml" />
+    <Content Include="Views\Booking\PartialComments.cshtml" />
+    <Content Include="Views\Salon\PartialUserSalonMenu.cshtml" />
+    <Content Include="Views\Salon\Edit.cshtml" />
+    <Content Include="Views\Salon\PartialEditAddress.cshtml" />
+    <Content Include="Views\Salon\PartialEditPhoneAndWebContact.cshtml" />
+    <Content Include="Views\Salon\PartialEditSalon.cshtml" />
+    <Content Include="Views\Salon\List.cshtml" />
+    <None Include="Properties\PublishProfiles\Beta.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Calibration\Views\Photo\" />
+    <Folder Include="Areas\VirtualMakeover\Views\Trace\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TryOnMirror.Entities\TryOnMirror.Entities.csproj">
+      <Project>{1da80212-3948-4674-8677-4596dc8e0636}</Project>
+      <Name>TryOnMirror.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOnMirror.Core\TryOnMirror.Core.csproj">
+      <Project>{d8eb33b2-4b03-4e0a-86f9-690fde22728f}</Project>
+      <Name>TryOnMirror.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOnMirror.CV\TryOnMirror.CV.csproj">
+      <Project>{0c751218-5fc0-4685-b9ef-5b90618e4f73}</Project>
+      <Name>TryOnMirror.CV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOnMirror.DataService\TryOnMirror.DataService.csproj">
+      <Project>{df1f9520-4f0f-487d-a240-2fe996b59a99}</Project>
+      <Name>TryOnMirror.DataService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9971</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/tryonmirror</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

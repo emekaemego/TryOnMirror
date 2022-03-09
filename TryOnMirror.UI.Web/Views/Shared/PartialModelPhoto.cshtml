@@ -1,0 +1,15 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model string
+
+@*<li>
+    <a data-url="@Url.Action("get-photo-coords", "trace", new { fn = Model, area="VirtualMakeover" })">
+        <img src="@Html.ModelImage(Model, true)" alt=""/>
+    </a>
+</li>*@
+
+<div class="col-sm-4">
+    <a href="#" class="thumbnail"
+         data-url="@Url.Action("get-photo-coords", "trace", new { fn = Model, area="VirtualMakeover" })">
+        <img src="@Html.ModelImage(Model, true)" alt="model">
+    </a>
+</div>

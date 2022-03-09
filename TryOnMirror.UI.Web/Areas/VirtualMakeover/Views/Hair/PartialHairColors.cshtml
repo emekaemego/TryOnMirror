@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.HairColor>
+
+<ul class="clearfix">
+    @foreach(var m in Model)
+    {
+        <li style="background-color: @Html.HSL2Hex(m.Hue, (float)m.Saturation, (float)m.Luminance)">
+            <a href="#" data-url="@Url.Action("change-color","hair",new{c=m.HairColorId})" class="change-color">
+                <img src="@Url.Content(string.Format("~/assets/images/hair-colors/{0}-{1}-{2}.jpg",
+                                                     m.Hue,m.Saturation,m.Luminance))"/>
+            </a>
+        </li>
+    }
+</ul>

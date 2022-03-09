@@ -1,0 +1,8 @@
+﻿@model string[]
+
+<ul class="model-photos">
+    @foreach(var m in Model)
+    {
+        Html.Partial("PartialModelPhoto", m);
+    }
+</ul>

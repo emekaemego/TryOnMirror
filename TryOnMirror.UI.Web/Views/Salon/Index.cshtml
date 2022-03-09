@@ -1,0 +1,113 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.Controllers.EmailModel
+
+@{
+    ViewBag.Title = "Salon | TryOn Mirror";
+}
+@section scripts
+{
+    @Scripts.Render("~/assets/scripts/jqueryval")
+}
+@*<div style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #999; overflow: hidden;">
+    <img src="@Url.Content("~/assets/images/avatar.png")" class="float-left"
+        style="padding-right: 10px; width: 80px; height: 80px;" />
+    <h1 class="title float-left">
+        @Model.SalonName - <span style="font-size: 18px; color: #999;">@@@Model.Hook</span>
+    </h1>
+    
+    @if(ViewBag.CanModifySalon)
+    {
+        <a href="@Url.Action("edit", "salon", new { hook = Model.Hook })" class="float-right"  title="Edit salon"
+           style="display: block; margin-top: 20px; background-color: #ccc; font-size: 16px; padding: 5px;">
+            <i class="icon-pencil"></i>
+        </a>
+    }
+</div>
+
+<div class="col-1">
+    <div class="span8" style="margin-left: 0;">
+        @if(!string.IsNullOrEmpty(Model.About))
+        {
+            <h3>About</h3>
+            <p>
+                @Model.About
+            </p>
+        }
+
+        <h3>Contact Info</h3>
+        @if (Model.Address != null)
+        {
+            <p>
+                @Model.Address.AddressLine1, @Model.Address.City, @Model.Address.State
+            </p>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.PhoneNumbers))
+        {
+            <p>
+                <span><i class="icon-phone"></i></span> @Model.PhoneNumbers
+            </p>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Email))
+        {
+            var emails = Model.Email.Split(new [] {',', ' '});
+            <h4>Email</h4>
+            <p>
+                @foreach(var e in emails)
+                {
+                    <a href="mailto:@e">@e</a> 
+                }
+            </p>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Website))
+        {
+            var webiste = Model.Website.Split(new [] {',', ' '});
+            <h4>Email</h4>
+            <p>
+                @foreach(var w in webiste)
+                {
+                    <a href="mailto:@w" target="_blank">@w</a> 
+                }
+            </p>
+        }
+    </div>
+</div>*@
+
+<div class="title-wrapper">
+    <div class="container"><h1>Salon</h1></div>
+</div>
+
+<div class="container" style="margin-bottom: 30px;">
+    <h3 style="margin-top: 0;">
+        <i class="glyphicon glyphicon-info-sign" style="color: #FF7518;"></i>
+        This feature is still a work in-progress and will be available soon
+    </h3>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Drop your email with us if you would like to be notified when this feature is available</p>
+    
+
+            @using(Html.BeginForm("index","salon",FormMethod.Post, new{@class="form-inline"}))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Email, new {@class = "sr-only"})
+                    @Html.TextBoxFor(x => x.Email, new {type = "email", @class = "form-control", placeholder = "Email address"})
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            }
+
+        </div>
+        <div class="col-sm-12">
+            @if(TempData["Message"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Message"]
+                </div>
+            }
+        </div>
+    </div>
+</div>

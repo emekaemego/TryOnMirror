@@ -1,0 +1,192 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "Virtual Makeover | TryOn Mirror";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+     @Styles.Render("~/assets/css/vm-css")
+    <style type="text/css">
+        .pagination{text-align: center; border-bottom: 1px solid #EFEFEF;width: 100%;}
+        .pagination li a { font-size: 12px !important;}
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/assets/scripts/jqueryval")
+    @Scripts.Render(BundleVirtualPath.VirtualMakeoverJs)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //var imgSrcs = {
+            //    manualTraceRightEyeImg: { src: '@Url.Content("~/assets/images/trace-tip-right-eye-anchor.jpg")' },
+            //    anualTraceMouthLeftAnchorImg: { src: '@Url.Content("~/assets/images/trace-tip-mouth-left-anchor.jpg")' },
+            //    manualTraceMouthRightAnchorImg: { src: '@Url.Content("~/assets/images/trace-tip-mouth-right-anchor.jpg")' },
+            //    manualTraceNoseImg: { src: '@Url.Content("~/assets/images/trace-tip-nose-anchor.jpg")' },
+            //    manualTraceAdjustAnchorsImg: { src: '@Url.Content("~/assets/images/trace-tip-adjust-manual-trace-anchors.jpg")' }
+            //};
+            
+            $('#tryOnZone').addClass('hide');
+            //$('#traceWrapper').addClass('hide');
+            $('#makeoverMainMenu').tabit();
+            console.log($('#lnkShare'));
+            $('#lnkShare').click(function () {
+                this.target = "_blank";
+            });
+            
+            //$('a#lnkShare').trigger("click");
+        });
+    </script>
+}
+
+<div class="container">
+    <div id="virtualMakeover" class="clearfix">
+        <div class="row">
+            <div class="col-sm-12" style="padding-left: 0; padding-right: 0">
+                <ul class="menu" id="makeoverMainMenu">
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#hair">Hair</a></li>
+                    <li><a href="#eyes">Eyes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="makeoverBody" class="makeover clearfix">
+            <div class="row clearfix sections" id="sections">
+               
+                <div id="photos" data-url="" class="col-sm-12 clearfix">
+                    @Html.Partial("PartialPhotoSection", Model)
+                </div>
+
+                <div id="tryOnZone" class="col-sm-12 clearfix">
+                    <div class="row">
+                        <div id="components" class="col-sm-3 clearfix">
+                            <div class="busy">
+                                <img src="@Url.Content("~/assets/images/ajax-loader.gif")" alt="loading..." id="loader"/>
+                            </div>
+
+                            <div id="items">
+                                <div id="hair" data-url="@Url.Action("index","hair")"></div>
+                                <div id="eyes" data-url="@Url.Action("index","eye",new{cat=2})"></div>                                
+                            </div>
+                            
+                            <div class="trace-wrapper bury" id="retrace">
+                                @Html.Partial("PartialMakeoverPhotoTrace")
+                            </div>
+
+                            <div class="adjuster bury" id="adjuster">
+                                @Html.Partial("PartialItemAdjuster")
+                            </div>                                
+                        </div>
+
+                        <div id="mainPhotoWrapper" class="col-sm-7 clearfix">
+                            <div class="busy">
+                                <img src="@Url.Content("~/assets/images/ajax-loader.gif")" alt="loading..."/>
+                            </div>
+                            <div id="photo"></div>
+                            
+                            <div class="controls bury clearfix">
+                                <ul class="photo-menu">
+                                    <li><div id="zoomSlider"></div></li>
+                                    <li><a href="#" class="before-after">Before/After</a></li>
+                                    <li><a href="#" class="retrace-photo"><i class="icon-loading"></i><span>Retrace</span></a></li>
+                                    <li><a href="#" class="clear-makeover"><i class="icon-close"></i><span>Clear</span></a></li>
+                                    @*<li class="pull-right"></li>*@
+                                </ul>
+                                <div class="btn-group dropup">
+                                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-share"></span> 
+                                        Share <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#" id="lnkShareFacebbok" data-provider="Facebook" target="_blank">
+                                                <i class="icon-facebook-sign"></i> facebook
+                                            </a>
+                                        </li>
+
+                                        @*<li><a href="#"><i class="icon-twitter-sign"></i> twitter</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-save"></span> Download</a></li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 clearfix" id="currentlyWearing">
+                            <h4>What I'm wearing</h4>
+
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="traceOverlay">
+        <div id="traceWrapper" class="row clearfix">
+        <div class="row" id="trace" style="background-color: #fff;">
+            <div class="col-sm-12 headline clearfix">
+                <h3>Trace photo</h3>
+            </div>
+            
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="busy">
+                                    <img src="@Url.Content("~/assets/images/ajax-loader.gif")" alt="loading..."/>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 description"></div>
+                        </div>
+                    </div>
+
+                    <div id="tracePhotoWrapper" class="col-sm-8">
+                        <div id="tracePhoto"></div>
+                        <ul class="controls">
+                            <li><div id="traceZoomSlider"></div></li>
+                        </ul>
+                    </div>                    
+                </div>
+            </div>
+        </div>        
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">    
+    <input type="hidden" id="minBookDate" value="@DateTime.Now.ToString("dd/mm/yyyy hh:mm tt")"/>
+    <input id="ImageData" type="text" value=""/>
+    @Html.Partial("PartialTraceWizard")
+    <a href="@Url.Action("finalize-makeover", "home", new { area = "VirtualMakeover" })" id="finalizemakeover"></a>
+    <a href="@Url.Action("save-new-trace", "trace", new { area = "VirtualMakeover" })" id="saveTrace"></a>
+    <a href="@Url.Action("update", "trace", new { area = "VirtualMakeover" })" id="updateTraceUrl"></a>
+    <a href="@Url.Action("get-default-model-photo","trace", new { area = "VirtualMakeover" })" id="defaultModelPhoto"></a>
+    <img src="@Url.Content("~/assets/images/trace-tip-right-eye-anchor.jpg")" id="manualTraceRightEyeImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-mouth-left-anchor.jpg")" id="manualTraceMouthLeftAnchorImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-mouth-right-anchor.jpg")" id="manualTraceMouthRightAnchorImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-nose-anchor.jpg")" id="manualTraceNoseImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-adjust-manual-trace-anchors.jpg")" id="manualTraceAdjustAnchorsImg" alt=""/>
+</div>

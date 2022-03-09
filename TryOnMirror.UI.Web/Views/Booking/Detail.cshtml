@@ -1,0 +1,113 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@using SymaCord.TryOnMirror.UI.Web.ViewModels
+@model SymaCord.TryOnMirror.Entities.HairstyleBooking
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery.timeago.settings.allowFuture = true;
+            jQuery("abbr.timeago").timeago();
+        });
+    </script>
+}
+
+<div class="title">
+    <h1 class="title float-left">Booking - @Model.BookingDate.ToString("dd MMM yyyy - h:mm tt")</h1>
+    
+    @Html.Partial("PartialUserNav")
+</div>
+
+@*<div class="row-fluid">
+    <div class="span4">
+        <h3><i class="icon-user"></i> @Model.UserProfile.UserName</h3>
+    </div>
+    <div class="span7">
+        
+    </div>
+</div>*@
+
+<div class="row-fluid">
+    <div class="span5">
+        <img src="@Html.MakeoverImage(Model.ImageFileName, false)"/>
+    </div>
+    
+    <div class="span7">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-info"></i>
+                    Booking Details
+                </div>
+
+                <div class="tools">
+                    <a href="#" class="btn">Edit</a>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="portlet-header">
+                    <span><i class="icon-user"></i> @Model.UserProfile.UserName</span>
+                
+                    <span><i class="icon-calendar"></i> @Html.Timeago(Model.BookingDate)</span>
+                    
+                    @*<span>@Html.BookingStatusIcon(Model.StatusId) @Html.StatusText(Model.StatusId)</span>*@
+                   
+                    <div class="span6">
+                        <input type="radio" id="pending" name="status"/> 
+                        <label for="pending" style="width: 65px; float: left;">Pending</label>
+                        <input type="radio" id="approved" name="status"/> 
+                        <label style="width: 65px; float: left;" for="approved">Approved</label>
+                        <input type="radio" id="cancelled" name="status"/> 
+                        <label style="width: 65px; float: left;" for="cancelled">Cancelled</label>
+                        <input type="radio" id="done" name="status"/> 
+                        <label style="width: 65px; float: left;" for="done">Done</label>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.Note))
+                {
+                    <div class="portlet-note">
+                        @Model.Note
+                    </div>
+                }                   
+            </div>
+        </div>
+    </div>
+    
+    <div class="span7">
+@*        <div>
+            <h3><i class="icon-user"></i> @Model.UserProfile.UserName</h3>
+        </div>*@
+                
+        <h4 style="border-bottom: 1px solid #EEEEEE; margin-bottom: 15px;">Comments</h4>
+        
+        <ul class="comments">
+@*            
+            @if(!string.IsNullOrEmpty(Model.Note))
+            {
+                <li class="in">
+                    <img class="avatar" src="@Url.Content("~/assets/images/avatar.png")" alt="">
+                    <div class="message">
+                        <span class="arrow"></span>
+                        <a class="name" href="#">@Model.UserProfile.UserName</a>
+                        <span class="datetime">at @Model.DateCreated.ToString("MMM dd, yyyy h:mm tt ")</span>
+                        <span class="body">
+                            @Model.Note
+                        </span>
+                    </div>
+                </li>
+            }*@
+            
+            @Html.Partial("PartialComments", Model.Comments)
+        </ul>
+        
+        <div class="comment-form">
+            @Html.Partial("PartialCommentForm", new NewBookingCommentModel{BookingId=Model.Identifier})
+        </div>
+    </div>
+</div>

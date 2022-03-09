@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "TryOn Mirror";
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myCarousel').carousel();
+        });
+    </script>
+}
+@section featured
+    {
+        <div class="content-wrapper">
+            <div class="teaser">
+@*                <div class="teaser-banner float-left">
+                    <a href="@Url.Action("index","home",new{Area="VirtualMakeover"})">
+                        <img src="@Url.Content("~/assets/images/test-banner-01.jpg")"/>
+                    </a>
+                </div>*@
+                
+                <div class="teaser-banner float-left" style="height: 326px; overflow: hidden;">
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <a href="@Url.Action("index","home",new{Area="VirtualMakeover"})">
+                                    <img src="@Url.Content("~/assets/images/test-banner-01.jpg")"/>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="@Url.Action("index","home",new{Area="VirtualMakeover"})">
+                                    <img src="@Url.Content("~/assets/images/test-banner-02.jpg")"/>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Carousel nav 
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>-->
+                    </div>
+
+                </div>
+                
+                <ul class="features float-right">
+                    <li>
+                        <div class="message float-left">
+                            <div>
+                                <h2 class="title">LICENSE OUR MAKEOVER TECHNOLOGY</h2>
+                                @*                                <span class="description">
+                                    Atelier TV's latest masterclass with Natalie Hartley
+                                </span>*@                                    
+                            </div>
+                            <p>
+                                <a href="#" class="btn btn-primary">Contact us Now</a>
+                            </p>
+                        </div>
+                            
+                        <img src="@Url.Content("~/assets/images/teaser-feature-01.png")" class="float-right"/>
+                    </li>
+                    
+                    <li class="last">
+                        <div class="message float-right">
+                            <div>
+                                <h2 class="title">GET YOUR SALON LISTED</h2>
+                                <span class="description">
+                                    @*Atelier TV's latest masterclass with Natalie Hartley*@
+                                </span>                                    
+                            </div>
+
+                            <p>
+                                <a href="#" class="btn btn-primary">Get Listed Now</a>
+                            </p>
+                        </div>
+                            
+                        <img src="@Url.Content("~/assets/images/teaser-feature-02.jpg")" class="float-left"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+
+<div class="featured">
+        <div class="items-container row-1">
+            <div class="item">
+                <div style="background: url('@Url.Content("~/assets/images/featured-hairstyle.jpg")') no-repeat;"
+                     class="featured-hairstyle" >
+                    <h3 class="title">
+                        Hair Ideas to Try Now
+                    </h3>
+                    @*                            <a href="#" class="btn btn-large btn-primary">Try it On Now</a>*@
+                </div>
+                @*<img src="@Url.Content("~/assets/images/featured-hairstyle.jpg")"/>*@
+            </div>
+                        
+            <div class="item">
+                <ul class="item-container">
+                    <li class="face-shape-hairstyles">
+                        <img src="@Url.Content("~/assets/images/hairstyle-face-shape.jpg")" class="float-left"/>
+                        <div>
+                            <h3 class="title">The Best New Haircuts For Your Face Shape </h3>                                
+                            These styles flatter round, square, oval and heart-shaped faces.
+                            <br/>
+                            <a href="#">read more</a>
+                        </div>                                    
+                    </li>
+
+                    <li class="hair-tricks">
+                        <h3 class="title">Industry Experts on Hair Secrets </h3>
+                        <span>You've gotta try these tricks!</span>
+                        <p>
+                            <a href="#" class="btn btn-primary">Read</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                        
+            <div class="item" style="margin-right: 0; width: 350px;">
+                <ul style="overflow: hidden;">
+                    <li>
+                        <img src="@Url.Content("~/assets/images/stylish-sunglass.jpg")" class="float-left" 
+                             style="padding-right: 10px;"/>
+                                
+                        <div>
+                            <h3 class="title">What sunglass style suits you?</h3>
+                            <p style="padding-top: 7px;">
+                                Use our virtual makeover to find the perfect frame for your face.
+                            </p>
+                        </div>                                    
+                    </li>
+                                
+                    <li>
+                                    
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

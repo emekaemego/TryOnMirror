@@ -1,0 +1,226 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "Calibration ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+     @Styles.Render("~/assets/css/vm-css")
+    <style type="text/css">
+        .pagination{text-align: center; border-bottom: 1px solid #EFEFEF;width: 100%;}
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/assets/scripts/jqueryval")
+    @Scripts.Render(BundleVirtualPath.VirtualMakeoverJs)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tryOnZone').addClass('hide');
+            $('#makeoverMainMenu').tabit();
+        });
+    </script>
+}
+
+
+<div class="container">
+    <div id="virtualMakeover" class="clearfix">
+        <div class="row">
+            <div class="col-sm-12" style="padding-left: 0; padding-right: 0">
+                <ul class="menu" id="makeoverMainMenu">
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#hair">Hair</a></li>
+                    <li><a href="#eyes">Eyes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="makeoverBody" class="makeover clearfix">
+            <div class="row clearfix sections" id="sections">
+               
+                <div id="photos" data-url="" class="col-sm-12 clearfix">
+                    @Html.Partial("PartialPhotoSection", Model)
+                </div>
+
+                <div id="tryOnZone" class="col-sm-12 clearfix">
+                    <div class="row">
+                        <div id="components" class="col-sm-3 clearfix">
+                            <div class="busy">
+                                <img src="@Url.Content("~/assets/images/ajax-loader.gif")" alt="loading..." id="loader"/>
+                            </div>
+
+                            <div id="items">
+                                <div id="hair" data-url="@Url.Action("index","hair")"></div>
+                                <div id="eyes" data-url="@Url.Action("index","eye",new{cat=2})"></div>                                
+                            </div>
+                            
+                            <div class="trace-wrapper bury" id="retrace">
+                                @Html.Partial("PartialMakeoverPhotoTrace")
+                            </div>
+
+                            <div class="adjuster bury" id="adjuster">
+                                @Html.Partial("PartialItemAdjuster")
+                            </div>                                
+                        </div>
+
+                        <div id="mainPhotoWrapper" class="col-sm-7 clearfix">
+                            <div class="busy">
+                                <img src="@Url.Content("~/assets/images/ajax-loader.gif")" alt="loading..."/>
+                            </div>
+                            <div id="photo"></div>
+                            
+                            <div class="controls bury clearfix">
+                                <ul class="photo-menu">
+                                    <li><div id="zoomSlider"></div></li>
+                                    <li><a href="#" class="before-after">Before/After</a></li>
+                                    <li><a href="#" class="retrace-photo"><i class="icon-loading"></i><span>Retrace</span></a></li>
+                                    <li>
+                                        <a href="#" class="toggle-trace"><i class="icon-eye-2"></i><span>Toggle guide</span></a>
+                                    </li>
+                                    <li><a href="#" class="clear-makeover"><i class="icon-close"></i><span>Clear</span></a></li>
+                                </ul>
+                                
+                                <button type="button" id="btnSaveCalibration" class="btn btn-xs">
+                                    <span class="glyphicon glyphicon-save"></span> Save
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="traceWrapper" class="row bury clearfix">
+        <div class="row" id="trace">
+            <div class="col-sm-12 headline clearfix">
+                <h3>Trace photo</h3>
+            </div>
+            
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4 description"></div>
+        
+                    <div id="tracePhotoWrapper" class="col-sm-8">
+                        <div id="tracePhoto"></div>
+                        <ul class="controls">
+                            <li><div id="traceZoomSlider"></div></li>
+                        </ul>
+                    </div>                    
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+@*<div id="virtualMakeover">
+    
+    <ul class="menu" id="makeoverMainMenu">
+        <li><a href="#photos">Models</a></li>
+        <li><a href="#hair">Hair</a></li>
+        <li><a href="#eyes">Eyes</a></li>
+    </ul>
+
+    <div id="makeoverBody" class="calibration">
+        <div id="items">
+            <div class="sections" id="sections">
+                <div id="photos" data-url="">
+                    @Html.Partial("PartialPhotoSection", Model)
+                </div>
+                <div id="hair" data-url="@Url.Action("index","hair")"></div>
+                <div id="eyes" data-url="@Url.Action("index","eye",new{cat=2})"></div>
+                <p>
+                    <a href="#" class="btn btn-mini btn-primary adjust-control">Adjust</a>
+                </p>
+            </div>
+            
+            <div class="trace-wrapper hide" id="retrace">
+                @Html.Partial("PartialMakeoverPhotoTrace")
+            </div>
+            
+            <div class="adjuster hide" id="adjuster">
+                @Html.Partial("PartialItemAdjuster")
+            </div>
+
+        </div>
+
+        <div id="mainPhotoWrapper">
+            <div id="photo">
+                
+            </div>
+            
+            <ul class="controls">
+                <li><div id="zoomSlider"></div></li>
+                <li><a id="btnSaveCalibration" class="btn btn-primary btn-mini">Save</a></li>
+                
+                <li>
+                    <ul class="li-controls hide">
+                        <li><a href="#" class="retrace-photo"><i class="icon-loading"></i> <span>Retrace</span></a></li>
+                        <li><a href="#" class="clear-makeover"><i class="icon-close"></i><span>Clear</span></a></li>
+                        <li>
+                            <a href="#" class="toggle-trace"><i class="icon-eye-2"></i><span>Toggle guide</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<div id="traceWrapper" class="hide">
+    <div class="modal-header">
+        <button type="button" class="close dialog-close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3>Trace photo</h3>
+    </div>
+
+    <div class="description" style="float: left;">
+        <div id="autoTrace">
+
+            <!-- Image element for face in square goes here -->
+            <img src="@Url.Content("~/assets/images/trace-tip-face-rect.jpg")" alt="face tip"/>
+                
+            <p>
+                Is your face in the square
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary btn-mini confirm-btn" rel="yes">Yes</a> 
+                <a href="#" class="btn btn-primary btn-mini confirm-btn no" rel="no">No</a>
+            </p>
+        </div>
+    </div>
+        
+    <div id="tracePhotoWrapper">
+        <div id="tracePhoto"></div>
+    </div>
+</div>*@
+
+
+
+<div class="hide">
+    @Html.Partial("PartialTraceWizard")
+    <a href="@Url.Action("get-default-model-photo","trace", new { area = "VirtualMakeover" })" id="defaultModelPhoto"></a>
+    <a href="@Url.Action("trace-new-model","trace")" id="traceFace"></a>
+    <a href="@Url.Action("update", "trace", new { area = "VirtualMakeover" })" id="updateTraceUrl"></a>
+    <a href="@Url.Action("save-new-model-trace","trace",new{area="VirtualMakeover"})" id="saveTrace"></a>
+    <a href="@Url.Action("save-new-hairstyle","hair",new{area="Calibration"})" id="saveNewHairUrl"></a>
+    <a href="@Url.Action("update-hairstyle-trace","hair",new{area="Calibration"})" id="editHairUrl"></a>
+    <a href="@Url.Action("save-new-glass","eye",new{area="Calibration", cat=2})" id="saveNewEyeglass"></a>
+    <a href="@Url.Action("save-new-glass","eye",new{area="Calibration", cat=1})" id="saveNewSunglass"></a>
+    <img src="@Url.Content("~/assets/images/trace-tip-right-eye-anchor.jpg")" id="manualTraceRightEyeImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-mouth-left-anchor.jpg")" id="manualTraceMouthLeftAnchorImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-mouth-right-anchor.jpg")" id="manualTraceMouthRightAnchorImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-nose-anchor.jpg")" id="manualTraceNoseImg" alt=""/>
+    <img src="@Url.Content("~/assets/images/trace-tip-adjust-manual-trace-anchors.jpg")" id="manualTraceAdjustAnchorsImg" alt=""/>
+    <input id="HairstyleImage" data-url="@Url.Action("new-hairstyle","hair")" type="file" name="HairstyleImage"/>
+    <input id="sunglassUpload" data-url="@Url.Action("new-glass","eye", new{cat=1})" type="file" name="GlassImage"/>
+    <input id="eyeglassUpload" data-url="@Url.Action("new-glass","eye", new{cat=2})" type="file" name="GlassImage"/>
+    <input id="contactLensUpload" data-url="@Url.Action("new-contact-lens","eye", new{cat=2})" type="file" name="ImageFile"/>
+</div>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF1F9520-4F0F-487D-A240-2FE996B59A99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SymaCord.TryOnMirror.DataService</RootNamespace>
+    <AssemblyName>TryOnMirror.DataService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+    <OutputPath>bin\Beta\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Components.Validator">
+      <HintPath>..\..\Libs\castle\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\Libs\castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel">
+      <HintPath>..\..\Libs\castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\Libs\castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IContactLensService.cs" />
+    <Compile Include="Services\IGlassService.cs" />
+    <Compile Include="Services\Impl\AddressService.cs" />
+    <Compile Include="Services\Impl\BrandService.cs" />
+    <Compile Include="Services\Impl\CommentService.cs" />
+    <Compile Include="Services\Impl\ContactLensService.cs" />
+    <Compile Include="Services\Impl\GlassService.cs" />
+    <Compile Include="Services\Impl\HairCategoryService.cs" />
+    <Compile Include="Services\IHairCategoryService.cs" />
+    <Compile Include="Services\Impl\HairColorService.cs" />
+    <Compile Include="Services\Impl\HairstyleBookingService.cs" />
+    <Compile Include="Services\Impl\HairstyleService.cs" />
+    <Compile Include="Services\IHairstyleService.cs" />
+    <Compile Include="Services\IAddressService.cs" />
+    <Compile Include="Services\IHairstyleBookingService.cs" />
+    <Compile Include="Services\ICommentService.cs" />
+    <Compile Include="Services\IHairColorService.cs" />
+    <Compile Include="Services\IBrandService.cs" />
+    <Compile Include="Services\ISharedMakeoverService.cs" />
+    <Compile Include="Services\Impl\SharedMakeoverService.cs" />
+    <Compile Include="Services\ISalonService.cs" />
+    <Compile Include="Services\Impl\SalonService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
+    <Compile Include="Services\Impl\RoleService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\Impl\UserService.cs" />
+    <Compile Include="Services\ITracedPhotoService.cs" />
+    <Compile Include="Services\Impl\TracedPhotoService.cs" />
+    <Compile Include="WindsorBootstrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TryOnMirror.Entities\TryOnMirror.Entities.csproj">
+      <Project>{1DA80212-3948-4674-8677-4596DC8E0636}</Project>
+      <Name>TryOnMirror.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOnMirror.Core\TryOnMirror.Core.csproj">
+      <Project>{D8EB33B2-4B03-4E0A-86F9-690FDE22728F}</Project>
+      <Name>TryOnMirror.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOnMirror.DataAccess\TryOnMirror.DataAccess.csproj">
+      <Project>{8D5859B5-EA1D-435E-82D2-D10659697205}</Project>
+      <Name>TryOnMirror.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

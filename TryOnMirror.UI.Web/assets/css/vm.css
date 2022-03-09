@@ -1,0 +1,460 @@
+﻿#virtualMakeover {
+    width: 946px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+#virtualMakeover .col-xs-1, #virtualMakeover .col-xs-2, #virtualMakeover .col-xs-3, #virtualMakeover .col-xs-4, 
+#virtualMakeover .col-xs-5, #virtualMakeover .col-xs-6, #virtualMakeover .col-xs-7, #virtualMakeover .col-xs-8, 
+#virtualMakeover .col-xs-9, #virtualMakeover .col-xs-10, #virtualMakeover .col-xs-11, #virtualMakeover .col-xs-12, 
+#virtualMakeover .col-sm-1, #virtualMakeover .col-sm-2, #virtualMakeover .col-sm-3, #virtualMakeover .col-sm-4, 
+#virtualMakeover .col-sm-5, #virtualMakeover .col-sm-6, #virtualMakeover .col-sm-7, #virtualMakeover .col-sm-8, 
+#virtualMakeover .col-sm-9, #virtualMakeover .col-sm-10, #virtualMakeover .col-sm-11, #virtualMakeover .col-sm-12, 
+#virtualMakeover .col-md-1, #virtualMakeover .col-md-2, #virtualMakeover .col-md-3, #virtualMakeover .col-md-4, 
+#virtualMakeover .col-md-5, #virtualMakeover .col-md-6, #virtualMakeover .col-md-7, #virtualMakeover .col-md-8, 
+#virtualMakeover .col-md-9, #virtualMakeover .col-md-10, #virtualMakeover .col-md-11, #virtualMakeover .col-md-12, 
+#virtualMakeover .col-lg-1, #virtualMakeover .col-lg-2, #virtualMakeover .col-lg-3, #virtualMakeover .col-lg-4, 
+#virtualMakeover .col-lg-5, #virtualMakeover .col-lg-6, #virtualMakeover .col-lg-7, #virtualMakeover .col-lg-8, 
+#virtualMakeover .col-lg-9, #virtualMakeover .col-lg-10, #virtualMakeover .col-lg-11, #virtualMakeover .col-lg-12 {
+    /*padding-left: 0;
+    padding-right: 0;*/
+}
+
+#virtualMakeover ul.menu {
+    font-size: 1.1em;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 5px 0 0 0;
+    text-align: left;
+    overflow: hidden;
+    background-color: #efefef;
+    /*display: block;*/
+}
+
+#virtualMakeover ul.menu li
+{
+   display: inline;
+   list-style: none;
+}
+
+#virtualMakeover ul.menu li a.active {
+    color: #000 !important; text-decoration: none;
+}
+
+#virtualMakeover ul.menu li a.first
+{
+    padding-left: 0;
+}
+
+#virtualMakeover ul.menu li a
+{
+    cursor: pointer;
+    text-transform: uppercase;
+    background: none;
+    text-decoration: none;
+    float: left;
+    padding: 5px 30px;
+    display: block;
+    color: #666;
+    /*border-right: 1px solid #fff;*/
+}
+
+#virtualMakeover ul.menu li a:hover
+{
+    color: #000;
+    background-color: #efefef;
+    text-decoration: none;
+}
+
+#virtualMakeover ul.menu li a.active
+{
+    color: #000;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+#virtualMakeover ul.sub-menu {
+    font-size: 0.8em;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+    /*border-bottom: 2px solid #333;*/
+    background-color: #333;
+    /*display: block;*/
+}
+
+#virtualMakeover ul.sub-menu li
+{
+   display: inline;
+   list-style: none;
+}
+
+#virtualMakeover ul.sub-menu li a
+{
+    cursor: pointer;
+    text-transform: uppercase;
+    background: none;
+    text-decoration: none;
+    float: left;
+    padding: 3px 7px;
+    display: block;
+    color: #efefef;
+    /*border-right: 1px solid #fff;*/
+}
+
+#virtualMakeover ul.sub-menu li a.active {
+    color: #999 !important;text-decoration: none;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+/*#virtualMakeover ul.sub-menu li a.first
+{
+    padding-left: 0;
+}*/
+
+#virtualMakeover ul.sub-menu li a:hover
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.upload-instruction h4.headline, .traced-photos h4.headline
+{
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+}
+
+.upload-instruction h4 span, .traced-photos h4 span {
+    border-bottom: 5px solid #333;
+    float: left;
+    display: block;
+}
+
+.upload-instruction ul {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.upload-instruction ul li {
+    padding: 0;
+}
+
+.good-photo h4, .bad-photos h4 {
+    font-size: 14px;
+}
+
+#virtualMakeover .model-photos .thumbnail{
+    border: none;
+    text-align: left;
+}
+
+#virtualMakeover .model-photos .thumbnail > img {
+    padding-left: 0;
+}
+
+#makeoverBody #photos, #tryOnZone {
+    border: 1px solid #999;
+    /*height: 500px;*/
+}
+
+.busy {
+    display: none;
+    text-align: center;
+    width: 80px;
+    height: 9px;
+}
+
+#mainPhotoWrapper .busy {
+    position: absolute;
+    top: 285px;
+    margin-left: 200px;
+    width: 128px;
+    z-index: 100;
+    display: none;
+}
+
+#tryOnZone #mainPhotoWrapper
+{
+    position: relative;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    padding: 0;
+}
+
+#mainPhotoWrapper .controls {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    left: 0;bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px 5px 5px 15px;
+}
+
+.controls li #zoomSlider, .controls li #traceZoomSlider{
+    width: 90px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.controls li #zoomSlider {
+    margin-right: 15px;
+}
+
+.controls li .ui-slider-handle {
+    cursor: pointer;
+}
+
+#mainPhotoWrapper .controls .photo-menu li {
+    float: left;
+    list-style: none;
+    margin-right: 5px;
+}
+
+#mainPhotoWrapper .controls .photo-menu li a {
+    font-size: .85em;
+    color: #000;
+    padding: 3px 7px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+}
+
+#mainPhotoWrapper .controls .photo-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+#tryOnZone #photo {
+    width: 100%;
+    margin: 0;
+    height: 498px;
+}
+
+#tryOnZone #components {
+    padding: 1px;
+}
+
+ul.hairstyles, ul.glasses, ul.contact-lenses
+{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+    padding-left: 25px;
+    list-style: none;
+}
+
+ul.hairstyles li, ul.glasses li, ul.contact-lenses li {
+   display: inline;
+   list-style: none;
+    margin-right: 7px;
+    margin-top: 5px;
+    display: block;
+    float: left;
+    overflow: hidden;
+}
+
+ul.glasses li, ul.contact-lenses li {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+ul.hairstyles li {
+    width: 95px;
+    height: 120px;
+    border: 1px solid #ccc;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+}
+
+ul.hairstyles li p {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    background: #000;
+    opacity: 0.4;
+    padding: 3px;
+    margin-bottom: 0;
+    width: 95%;
+}
+
+.makeover ul.hairstyles li {
+    width: 92px; 
+    height:116px;
+}
+
+.controls-container {
+    margin-left: 25px;
+}
+
+.retrace-container h3 {
+    padding: 5px 10px;
+    background-color: #000;
+    color: #fff;
+    margin: 1px 1px 10px 1px;
+    font-size: 16px;
+}
+
+.retrace-container div {
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.retrace-container li.controls {
+    padding-left: 10px;
+}
+
+.retrace-container li.controls a {
+    margin-right: 10px;
+}
+
+#adjuster .controls {
+    margin-left: 15px;
+}
+
+#adjuster .controls a {
+    margin-right: 10px;
+}
+
+#traceOverlay {
+    z-index: 10000;
+    display: none;
+}
+
+#traceWrapper {
+    width: 946px;
+    padding: 0;
+}
+
+#trace {
+    border: 1px solid #999;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#trace .headline {
+    padding: 0;
+    margin: 0;   
+}
+
+#trace .headline h3 {
+    margin: 1px 1px 0 1px;
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fefefe;
+    font-size: 18px;
+}
+
+#tracePhotoWrapper {
+    border-left: 1px solid #999;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+#tracePhotoWrapper .controls {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+#trace .description {
+    padding-top: 15px;
+    padding-left: 15px;
+    margin-left: 0;
+}
+
+#trace #tracePhoto {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 498px;    
+}
+
+#traceZoomSlider {
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+
+#wizard .btn-next, #wizard .btn-prev {
+    margin-top: 25px;
+}
+
+#wizard .btn-next{
+   margin-left: 100px;
+}
+#wizard .btn-prev{
+   float: left;
+}
+
+#hairColors {
+    margin-right: 0;
+    padding-left: 0;
+}
+
+#hairColors ul {
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+#hairColors li {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#hairColors li a {
+    display: block;
+}
+
+#hairColors .controls-container {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-left: 0;
+    margin-left: 0;
+}
+#hairColors .controls-container a {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+#currentlyWearing h4 {
+    font-size: 1.2em;
+}
+
+#currentlyWearing ul {
+    margin-top: 8px;
+}
+
+#currentlyWearing ul li {
+    padding: 8px 5px;
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+}
+
+/*ul.model-photos
+{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 0;
+    padding-left: 0;
+    overflow: hidden;
+}
+
+ul.model-photos li {
+   display: inline;
+   list-style: none;
+    margin-right: 7px;
+    margin-top: 5px;
+    display: block;
+    float: left;
+}*/

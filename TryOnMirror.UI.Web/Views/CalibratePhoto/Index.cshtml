@@ -1,0 +1,315 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@{
+    
+    ViewBag.Title = "Upload Photo ";
+}
+
+@section scripts
+{
+    @Scripts.Render(BundleVirtualPath.VirtualMakeoverJs)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var _initStep = 0; //Initial wizard start step
+            var isMouthOpen = false; //Indicate if the user's mouth is opened in picture
+            //Indicate if the tracing is manual. That's if system fails to detect face or returned user indicates that
+            //returned face is wrong
+            var isManualTrace = false;
+            var traceClickCount = 5; //Number of manual trace anchors to be added
+            var traceClicked = 0; //keeps track of how time the image has been clicked to add manual trace anchor
+            
+            $('#wizard').hide();
+            
+            var wizardNext = function (i) {
+                switch (i) {
+                case 0:
+                    makeover.processAllTraceManualAnchors(function() {
+                        makeover.calibrateFace();
+                    });
+                    return;
+                case 1:
+                    makeover.calibrateLeftEye();
+                    return;
+                case 2:
+                    makeover.calibrateRightEye();
+                    return;
+                case 3:
+                    makeover.createEyeballsPointsFromEyesAnchors();
+                    makeover.createEyeBrowsPointsFromEyesAnchors();
+                    makeover.calibrateLeftEyeball();
+                    return;
+                case 4:
+                    makeover.calibrateRightEyeball();
+                    return;
+                case 5:
+                    makeover.createEyeBrowsPointsFromEyesAnchors();
+                    makeover.calibrateLeftEyeBrow(null, { });
+                    return;
+                case 6:
+                    makeover.calibrateRightEyeBrow(null, { });
+                    return;
+                case 7:
+                    makeover.calibrateMouth();
+                    $('#step8Next').hide();
+                    return;
+                case 8:
+                    if (isMouthOpen) {
+                        makeover.processManualOpenMouthPoints();
+                        makeover.calibrateInnerMouth();
+
+                        console.log('Open mouth points', makeover.innerMouthPoints);
+                        return;
+                    }
+                    return 10;
+                default:
+                    return;
+                }
+            };
+
+            var wizardBack = function(i) {
+                switch (i) {
+                case 1:
+                    makeover.removeAllTraceContainers();
+                    makeover.manualTraceGroup = new Kinetic.Group();
+                    makeover.traceParentGroup.add(makeover.manualTraceGroup);
+
+                    var anchors = makeover.manualEyesTraceAnchors.concat();
+                    anchors.push.apply(anchors, makeover.manualMouthTraceAnchors);
+                    anchors.push.apply(anchors, makeover.noseManualTraceAnchors);
+
+                    for (var a = 0; a < anchors.length; a++) {
+                        makeover.manualTraceGroup.add(anchors[a]);
+                    }
+
+                    //makeover.mainLayer.draw();
+                    zoomManualTrace();
+                    return true;
+                case 2:
+                    makeover.calibrateFace(false);
+                    return true;
+                case 3:
+                    makeover.calibrateLeftEye(false);
+                    return;
+                case 4:
+                    makeover.calibrateRightEye(false);
+                    return;
+                case 5:
+                    makeover.calibrateLeftEyeball(false);
+                    return;
+                case 6:
+                    makeover.calibrateRightEyeball(false);
+                    return;
+                case 7:
+                    makeover.calibrateLeftEyeBrow(false, { });
+                    return;
+                case 8:
+                    makeover.calibrateRightEyeBrow(false, { });
+                    return;
+                case 9:
+                    makeover.calibrateMouth(false);
+                    return;
+                default:
+                    return true;
+                case 10:
+                    makeover.saveAllTraceAnchors($('#saveTrace').attr('href'), function(success) {
+                        if (success) {
+                            alert('Trace saved');
+                        }
+                    });
+                }
+            };
+
+            var wizardBeforNext = function (i) {
+
+                switch (i) {
+                    case 0:
+                        //Make sure all anchors for this step have been added to photo if manual tracing is enabled
+                        if (isManualTrace && traceClicked < traceClickCount) {
+                            alert('All trace anchors have not been added. Please click on the photo to add anchor.');
+                            return false;
+                        }
+                        return true;
+                default:
+                    return true;
+                    break;
+                }
+            };
+
+            var zoomManualTrace = function() {
+                //zoom
+                var anchors = makeover.manualEyesTraceAnchors.concat();
+                anchors.push.apply(anchors, makeover.manualMouthTraceAnchors);
+                anchors.push.apply(anchors, makeover.noseManualTraceAnchors);
+
+                var rect = makeover.anchorsToRect(anchors);
+                
+                rect.x -= (rect.width / 4);
+                rect.y -= (rect.height / 4);
+                rect.width += (rect.width / 2);
+                rect.height += (rect.height / 2);
+                
+                makeover.zoomToRoi(rect, true);
+            };
+            
+            var wizardSetting = {
+                ctrls: $("#wizard li"), //Structure for Steps
+                nextButtonTitle: 'Next >',
+                nextButtonCss: 'btn-next btn',
+                previousButtonTitle: '< Back',
+                previousButtonCss: 'btn-prev btn',
+                finishButtonTitle: 'Start Makeover',
+                onNext: wizardNext,
+                beforeNext: wizardBeforNext,
+                onBack: wizardBack
+               //beforeNextByTitle: wizardValidateByTitle,
+                //initStep: _initStep
+            };
+            
+            makeover.modelImageSrc = $('#modelImage').attr('src');
+            makeover.init('canvasContainer', 400, 460);
+            
+            //photo tracing steps
+            makeover.initFacialTrace($('#traceFace').attr('href'), function (response) {
+                
+                if(response.Success) {
+                    automaticTraceComplete.init('#autoTrace');
+                }else {
+                    alert('No face found');
+                }
+            });
+
+            $('#autoTrace a').click(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                
+                if ($this.attr('rel') == 'yes') {
+                    
+                    showWizard(10);
+                    $('#step10Next').hide();
+                }
+
+                if ($this.attr('rel') == 'no') {
+                    
+                    isManualTrace = true;
+                    makeover.clearAllTraceAnchors(); //remove all trace anchors
+                    makeover.removeAllTraceContainers(); //remove all trace elements on the stage
+                    makeover.manualTraceGroup = new Kinetic.Group();
+                    makeover.traceParentGroup.add(makeover.manualTraceGroup);
+                    makeover.mainLayer.draw();
+                    
+                    //Start the facial feature calculation and placements
+                    makeover.processManualFeaturesTrace(traceClickCount, function (anchor) {
+                        //console.log(anchor);
+                        switch (traceClicked) {
+
+                            case 0:
+                                //TODO: update UI
+                            case 1:
+                                if(traceClicked == 1) {
+                                    //TODO: update UI
+                                }
+                                
+                                makeover.manualEyesTraceAnchors.push(anchor);
+                                
+                                break;
+                            case 2:
+                                //TODO: update UI
+                            case 3:
+                                if(traceClicked == 3) {
+                                    //TODO: update UI
+                                }
+                                
+                                makeover.manualMouthTraceAnchors.push(anchor);
+                                break;
+                            case 4:
+                                //TODO: update UI
+                                makeover.noseManualTraceAnchors.push(anchor);
+
+                                zoomManualTrace();
+                                break;
+                        }
+
+                        traceClicked++;
+                        
+                        makeover.manualTraceGroup.add(anchor);
+                        makeover.mainLayer.draw();
+                    });
+                    
+                    showWizard(0);
+                }
+            });
+            
+            var showWizard = function (initStep) {
+                
+                wizardSetting.initStep = initStep;
+                $('#wizard').show();
+
+                $('#autoTrace').hide();
+
+                wizard(wizardSetting);
+            };
+
+            $('#traceIsMouthOpen a').click(function (e) {
+                e.preventDefault();
+                
+                var $this = $(this);
+                if($this.attr('rel') == 'yes') {
+                    isMouthOpen = true;
+                }
+                
+                if($this.attr('rel') == 'no') {
+                    isMouthOpen = false;
+                }
+                
+                $('#step8Next').click();
+            });
+            
+        });
+    </script>
+}
+
+<h1>Calibrate Face</h1>
+
+<div class="box float-left paddin-top20 padding-right20">
+    <div id="canvasContainer" style="border:1px solid #ccc;"></div>
+</div>
+
+<div id="autoTrace" class="hide">
+    <div>
+        <!-- Image element for face in square goes here -->
+        Is your face in the square
+    </div>
+    
+    <p>
+        <a href="#" class="btn btn-primary btn-mini confirm-btn" rel="yes">Yes</a> 
+        <a href="#" class="btn btn-primary btn-mini confirm-btn no" rel="no">No</a>
+    </p>
+</div>
+
+<ul id="wizard">
+    @*0*@ <li>Eyes edge trace</li> 
+    @*1*@ <li>Face</li>
+    @*2*@ <li>Left eye</li>
+    @*3*@ <li>Right eye</li>
+    @*4*@ <li>Left eyeball</li>
+    @*5*@ <li>Right eyeball</li>
+    @*6*@ <li>Left eye brows</li>
+    @*7*@ <li>Right eye brows</li>
+    @*8*@ <li id="traceIsMouthOpen">
+              <p>Lips trace</p>
+        Is your mouth open
+              <p>
+                  <a href="#" class="btn btn-primary btn-mini confirm-btn" rel="yes" >Yes</a> 
+                  <a href="#" class="btn btn-primary btn-mini confirm-btn no" rel="no">No</a>
+              </p>
+          </li>
+    @*9*@<li>
+             Open mouth trace
+         </li>
+    @*10*@<li>Complete.</li>
+</ul>
+<div id="mousePos"></div>
+
+<img src="@Url.Content("~/assets/images/model-2.jpg")" id="modelImage" style="display:none"/>
+<a href="@Url.Action("trace-facial-features","calibratephoto", new{id=Guid.NewGuid()})" id="traceFace" class="hide"></a>
+<a href="@Url.Action("save-trace","calibratephoto")" id="saveTrace" class="hide"></a>

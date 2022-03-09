@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>TryOn Mirror</title>
+        
+        @Styles.Render("~/assets/main-css")
+        @Scripts.Render("~/bundles/modernizr")
+        
+    </head>
+    <body>
+
+     <header class="navbar navbar-inverse navbar-fixed-top">
+      @Html.Partial("PartialHeader")
+    </header>
+        
+        <div class="marketing_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="promo-message">
+                            <h2>Kill the Competition</h2>
+                            <p>GLAM allows your customers to try on cosmetics virtually and get a futuristic insight as to how a 
+                                certain cosmetic would suit them. By removing the confusion out of the equation, GLAM can 
+                                revolutionize the way you interact with customers, taking your business's customer satisfaction, 
+                                loyalty, repetition and acquisition to new heights.</p>
+                            <p><a class="btn btn-primary" href="#">Try it Yourself</a> &nbsp; 
+                                <a class="btn btn-warning" href="#">License</a>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="promo-screenshot">
+                            <img src="@Url.Content("~/assets/images/responsive.png")" class="img-responsive" style="margin-top: 50px;"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="pitch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h1>Unify is a clean and fully responsive incredible Template.</h1>
+                        <p>
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
+                            voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut 
+                            volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.
+                        </p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            <a href="#" class="btn btn-lg btn-success">Contact us Now</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row services">
+                <div class="col-sm-4">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 item">
+                        <h4>Virtual Makeover</h4>
+                        <p>We here at Classic have proven we know that it is better to e-enable extensibly than to architect seamlessly. 
+                            If all of this may seem wonderful to you, that's because it is! Our functionality is.</p>
+                        <p><a class="btn btn-primary btn-sm" href="#">License →</a></p>
+                    </div>
+                </div>
+                    
+                <div class="col-sm-4">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 item">
+                        <h4>Salon</h4>
+                        <p>The accounting factor is short-term. Our functionality is unmatched, but our transparent models and user-proof 
+                            configuration is constantly considered a remarkable achievement.</p>
+                        <p><a class="btn btn-primary btn-sm" href="#">List your Salon →</a></p>
+                    </div>
+                </div>
+                    
+                <div class="col-sm-4">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 item">
+                        <h4>Sum it up!</h4>
+                        <p>We have proven we know that it is better to disintermediate intuitively than to expedite virally. The dot-com, 
+                            mission-critical structuring factor can be summed up in one word: compelling.</p>
+                        <p><a class="btn btn-primary btn-sm" href="#">Try it Now →</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        @Html.Partial("PartialFooter")
+
+        @Scripts.Render("~/bundles/main-js")
+    </body>
+</html>

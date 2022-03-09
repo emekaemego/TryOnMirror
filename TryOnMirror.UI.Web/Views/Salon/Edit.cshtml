@@ -1,0 +1,17 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.ViewModels
+@model SymaCord.TryOnMirror.UI.Web.ViewModels.EditSalonModel
+
+@{
+    ViewBag.Title = "Edit Salon";
+}
+
+<div class="title">
+    <h1 class="title float-left">Edit Salon</h1>
+    
+</div>
+
+@Html.Partial("PartialEditSalon", Model)
+
+@Html.Partial("PartialEditAddress", (AddressModel)ViewBag.AddressModel)
+
+@Html.Partial("PartialEditPhoneAndWebContact", (PhoneAndWebContactModel)ViewBag.PhoneAndWebContacts)

@@ -1,0 +1,53 @@
+﻿@if (Request.IsAuthenticated) {
+
+    @*<div class="yamm navbar navbar-right">
+            <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Manage", "Account",  new{area=""})">
+                @User.Identity.Name
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="@Url.Action("create","salon",new{area=""})">Create Salon</a></li>
+                <li>
+                    @using (Html.BeginForm("signout", "account",new{area=""}, FormMethod.Post, new { id = "signoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('signoutForm').submit()">Sign out</a>
+                    }
+                </li>
+            </ul>
+        </li>
+    </ul>             
+    </div>*@ 
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Manage", "Account",  new{area=""})">
+                <strong>@User.Identity.Name</strong>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Account Settings</a></li>
+                <li><a href="#">+ Add your business</a></li>
+                <li class="divider"></li>
+                <li>
+                    <a href="javascript:document.getElementById('signoutForm').submit()">Sign out</a>
+                    @using (Html.BeginForm("signout", "account",new{area=""}, FormMethod.Post, 
+                        new { id = "signoutForm", style="display:none;" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                    }
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+} else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li><a href="@Url.Action("register","account",new{Area=""})">Sign Up</a></li>*@
+        <li><a href="@Url.Action("signin","account",new{Area=""})">Sign In</a></li>
+    </ul>
+}

@@ -1,0 +1,20 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model string[]
+
+<div>
+    <ul class="contact-lenses">
+        @foreach(var m in Model)
+        {
+            <li>
+                <a href="@Url.Action("try-on-contact-lens","eye",new{fn=m, area="VirtualMakeover"})" class="retrace">
+                    <img src="@Html.EyeWearImage(m, true)" />
+                </a>
+            </li>
+        }
+    </ul>
+    
+    <p class="controls-container">
+        <a href="#" class="btn btn-xs btn-primary remove-contacts">Remove contacts</a>        
+        @*<a href="#" class="btn btn-mini btn-primary adjust-control">Adjust contacts</a>*@
+    </p>
+</div>

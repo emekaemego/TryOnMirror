@@ -1,0 +1,15 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model SymaCord.TryOnMirror.Entities.Comment
+@{
+    int currentUserId = ViewBag.CurrentUserId;
+}
+
+    <li class="@((Model.UserId == currentUserId)? "out": "in")">
+        <img class="avatar" src="@Url.Content("~/assets/images/avatar.png")" alt="">
+        <div class="message">
+            <span class="arrow"></span>
+            <a class="name" href="#">@Model.UserProfile.UserName</a>
+            <span class="datetime">@Html.Timeago(Model.DateCreated)</span>
+            <span class="body">@Model.Message</span>
+        </div>
+    </li>

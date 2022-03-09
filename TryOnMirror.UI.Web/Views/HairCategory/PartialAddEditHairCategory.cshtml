@@ -1,0 +1,9 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.HairCategoryModel
+
+<div class="control-group">
+<label class="control-label" for="CategoryName">Name</label>
+<div class="controls">
+@Html.TextBoxFor(x=>x.CategoryName,new{@class="title"})
+    @Html.ValidationMessageFor(x=>x.CategoryName)
+</div>
+</div>

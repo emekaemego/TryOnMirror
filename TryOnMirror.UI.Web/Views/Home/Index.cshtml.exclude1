@@ -1,0 +1,96 @@
+﻿@using SymaCord.VirtualMakeover.UI.Web.Makeover.Utils
+@{
+    ViewBag.Title = "Hair Calibration";
+}
+@section scripts
+{
+    @Scripts.Render(BundleVirtualPath.JqueryFileUploadJs)
+}
+
+<div class="box float-left padding-right20 paddin-top20">
+       
+        <div>
+            <canvas id="faceCanvas" width="450" height="520" style="border:1px solid #ccc;">
+                Your browser does not support HTML5 canvas
+            </canvas>
+        </div>
+</div>
+
+<div class="box float-left paddin-top20 padding-right20">
+    <h3 class="padding-bottom10">Select categories</h3>
+    <div class="padding-bottom30"></div>
+    
+    <h3 class="padding-bottom10">Calibrated hairs</h3>
+    <div></div>
+</div>
+
+    <div class="box float-right paddin-top20">       
+        <h3 class="padding-bottom10">Controls</h3>
+        <ul class="vertical-list no-underline padding-bottom30">
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-plus-3"></i></span> New Hair</a></li>
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-box-add"></i></span> Save</a></li>
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-pen-alt2"></i></span> Edit saved hair</a></li>
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-trashcan"></i></span> Clear</a></li>
+            <li><a href="@Url.Action("list","haircategory")">
+                    <span class="btn btn-mini btn-primary"><i class="icon-list"></i></span> Hair Categories
+                </a></li>
+        </ul>
+        
+        <h3 class="padding-bottom10">Model photo</h3>
+        <ul class="vertical-list no-underline">
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-camera"></i></span> Capture photo</a></li>
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-upload-2"></i></span> Upload photo</a></li>
+            <li><a href="#"><span class="btn btn-mini btn-primary"><i class="icon-images"></i></span> Select photo</a></li>
+        </ul>
+    </div>
+
+@*@section footer
+{
+<footer class="win-commandlayout navbar-fixed-bottom win-ui-dark">
+    <div class="container">
+        <div class="row">
+            <div class="span4 align-left">
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#xe03e;</span>
+                    <span class="win-label">New Hair</span>
+                </a>
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">R</span>
+                    <span class="win-label">Save</span>
+                </a>
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#xe20a;</span>
+                    <span class="win-label">Clear</span>
+                </a>
+            </div>
+   
+            <div class="span6 align-right">
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#x002a;</span>
+                    <span class="win-label">Capture Face</span>
+                </a>
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#x0028;</span>
+                    <span class="win-label">Upload Face</span>
+                </a>
+   
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#xe118;</span>
+                    <span class="win-label">Select Face</span>
+                </a>
+                
+                <a href="#" class="win-command">
+                    <span class="win-commandimage win-commandring">&#xe18e;</span>
+                    <span class="win-label">Hair Categories</span>
+                </a>
+   
+            </div>
+        </div>
+    </div>
+   </footer>
+}*@

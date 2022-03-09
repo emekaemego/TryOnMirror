@@ -1,0 +1,56 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model IEnumerable<SymaCord.TryOnMirror.Entities.CustomBooking>
+
+@{
+    //var status = (List<BookingStatus>) ViewBag.Statuses;
+}
+
+@foreach (var m in Model)
+{
+    <div class="booking">
+        <a href="@Url.Action("detail","booking",new{id=m.Identifier})">
+            <img src="@Html.MakeoverImage(m.ImageFileName, true)" title="@Html.StatusText(m.StatusId)" 
+            data-content="@m.Note" />             
+        </a>
+
+        <div class="body">
+            <div class="description">
+                <span class="name @((m.HasUnviewed)?"unviewed":"")">by: @m.UserName</span>
+                <span class="date">@Html.Timeago(m.BookingDate)</span>
+            </div>            
+        </div>
+        @*<span class="status">@Html.BookingStatusIcon(m.StatusId)</span>*@
+    </div>
+}
+
+@* @foreach (var m in Model)
+ {
+     <div class="booking">
+         <a href="@Url.Action("detail","booking",new{id=m.Identifier})" class="float-left">
+             <img src="@Html.MakeoverImage(m.ImageFileName, true)" />             
+         </a>
+         
+         <div class="description">
+             <span class="name"><i class="icon-user"></i> @m.UserName</span>
+
+                 <span class="note">
+                     @Html.LimitString(m.Note, 120)
+                 </span>
+
+             <span class="date">@m.BookingDate.ToString("dd MMM yyyy hh:mm tt")</span>
+
+             <span class="footer">
+                 <a href="#" style="font-size: 14px;"><i class="icon-comment-alt2-fill"></i> @m.CommentCount</a>
+                 @if(m.StatusId == status.Where(x=>x.StatusName.Equals("Done")).Select(x=>x.StatusId).FirstOrDefault())
+                 {
+                     <i class="icon-checkmark-3 float-right"></i>
+                 }
+             </span>
+         </div>
+         @if(m.HasUnviewed)
+         {
+             <span class="unviewed"><i class=icon-record></i></span>
+         }
+     </div>
+ }*@
+

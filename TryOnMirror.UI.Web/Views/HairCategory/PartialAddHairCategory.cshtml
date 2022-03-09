@@ -1,0 +1,22 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.HairCategoryModel
+
+@using (Html.BeginForm("add", "haircategory", FormMethod.Post, new { @data_ajax_enabled = "true", @data_target = "#hair-categories" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close dialog-close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>New Category</h3>
+    </div>
+    <div class="modal-body">
+        @Html.Partial("PartialAddEditHairCategory", Model)
+    
+@*        <div class="control-group">
+            <div class="controls">
+                <button class="btn" type="submit">Add</button>
+            </div>
+        </div>*@
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Add</button>        
+        <a href="#" class="btn dialog-close">Cancel</a>
+    </div>
+}

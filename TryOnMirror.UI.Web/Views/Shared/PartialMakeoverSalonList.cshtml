@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.Salon>
+
+@foreach(var m in Model)
+{
+    <div class="salon">
+        <span>
+            <img src="@Url.Content("~/assets/images/no-logo_t.png")" alt="logo" width="50" height="50" 
+                 class="logo float-left"/>
+        </span>
+        
+        <div class="body">
+            <a href="#" class="salon-name">@m.SalonName</a>
+            <span class="hook-book">
+                <a href="#" class="hook">#@m.Hook</a> 
+                <a href="@Url.Action("new-hairstyle-booking","booking", new{hook=m.Hook})" class="book-hairstyle">
+                    <i class="icon-calendar"></i> Book hairstyle</a>                
+            </span>
+            <span>@(m.Address.AddressLine1 + ", " + m.Address.City + " " + m.Address.State)</span>
+        </div>
+        <div class="form hide">
+            
+        </div>
+    </div>
+}

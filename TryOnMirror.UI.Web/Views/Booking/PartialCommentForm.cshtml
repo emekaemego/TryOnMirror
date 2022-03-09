@@ -1,0 +1,15 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.NewBookingCommentModel
+
+@using(Html.BeginForm("add-comment","booking", FormMethod.Post, new{id="commentForm", data_target="ul.comments"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x=>x.BookingId)
+
+    <div class="input-append">
+        @Html.TextAreaFor(x=>x.Message, new{@class="input-xxlarge", placeholder="Type comment here..."})
+        <div class="controls">
+            <button class="btn" type="submit">Post</button>
+        </div>
+    </div>
+}

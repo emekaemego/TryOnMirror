@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.CustomBooking>
+@{
+    ViewBag.Title = "Booking";
+}
+@section scripts
+{
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery.timeago.settings.allowFuture = true;
+            jQuery("abbr.timeago").timeago();
+
+            $('[data-content]').popover({ 'trigger': 'hover'});
+        });
+    </script>
+}
+
+<div class="title">
+    <h1 class="title float-left">Bookings</h1>
+    
+    @Html.Partial("PartialUserNav")
+</div>
+
+<div class="row-fluid">
+    <div class="span8 bookings">
+        @Html.Partial("PartialHairstyleBookings", Model)
+    </div>
+    
+    <div class="span3">
+        Sidebar content-->
+    </div>
+</div>

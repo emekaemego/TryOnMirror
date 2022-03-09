@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SymaCord.TryOnMirror.Entities.Glass>
+
+<div>
+    @Html.Partial("PartialGlasses", Model)
+    
+    <p class="controls-container">
+        <a href="#" class="btn btn-xs btn-primary remove-glass">Remove glass</a>  
+        <a href="#" class="btn btn-xs btn-primary adjust-control">Adjust glass</a>
+    </p>
+</div>

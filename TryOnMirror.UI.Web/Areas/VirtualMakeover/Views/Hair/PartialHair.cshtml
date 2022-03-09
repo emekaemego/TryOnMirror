@@ -1,0 +1,47 @@
+﻿
+@using SymaCord.TryOnMirror.Entities
+@model PagedList.StaticPagedList<string>
+   
+<ul class="sub-menu">
+    <li><a href="#hairstyles" class="first">Hairstyles</a></li>
+    <li><a href="#hairColors">Hair Colors</a></li>
+    @*<li><a href="#salons" class="first">Salons</a></li>*@
+</ul>
+    
+<div id="hairstyles" data-url="@Url.Action("hairstyles","hair")">
+    
+    <div class="item-content">
+        @Html.Partial("PartialHairstyles", Model)
+    </div>
+    
+@*    <div>
+        @Html.Partial("PartialHairColors", (IEnumerable<HairColor>)ViewBag.HairColors)
+    </div>*@
+
+    <p class="controls-container">
+        <a href="#" class="btn btn-xs btn-primary remove-hairstyle" rel="hairstyle">Remove hairstyle</a>        
+        <a href="#" class="btn btn-xs btn-primary adjust-control">Adjust hair</a>
+    </p>
+    
+</div>
+
+<div id="hairColors" class="clearfix" data-url="@Url.Action("colors","hair")">
+    @Html.Partial("PartialHairColors", (IEnumerable<HairColor>)ViewBag.HairColors)
+    
+    <p class="controls-container clearfix">
+        <a href="#" class="btn btn-xs btn-primary remove-hair-color" rel="hairColor">Remove Hair Color</a>        
+    </p>
+</div>
+
+@*<div id="salons" data-url="@Url.Action("makeover-salons","salon")">
+ @using(Html.BeginForm("makeover-salons","salon",new {area=""}, FormMethod.Get, new{@class="form-search", id="makeoverSalons",
+ data_target=".salons"}))
+ {
+   <input type="text" name="s" class="input-large search-query" placeholder="#Hook, Name or Address">
+   <button type="submit" class="btn">Find</button>
+ }
+
+   <div class="salons">
+       
+   </div>
+</div>*@

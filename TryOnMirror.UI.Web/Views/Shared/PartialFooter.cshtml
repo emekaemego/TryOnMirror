@@ -1,0 +1,45 @@
+﻿<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <ul>
+                    <li><a href="@Url.Action("index","home",new{Area="VirtualMakeover"})">Makeover</a></li>
+                    <li><a href="@Url.Action("index","salon",new{Area=""})">Salon</a></li>
+                    <li><a href="@Url.Action("about","home",new{Area=""})">About</a></li>
+                    <li><a href="@Url.Action("contact","home",new{Area=""})">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <ul class="social-icons pull-right">
+                    <li>
+                        <a class="social_facebook" data-original-title="Facebook" 
+                            href="https://www.facebook.com/tryonmirror"></a>
+                    </li>
+                    <li>
+                        <a href="https://www.twitter.com/tryonmirror" class="social_twitter" data-original-title="Twitter"></a>
+                    </li>
+                    <li>
+                        <a class="social_googleplus" data-original-title="Goole Plus" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <p>
+                    &copy; @DateTime.UtcNow.Year TryOn Mirror All Right Resered. 
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </p>
+            </div>
+            <div class="col-sm-4 pull-right" style="text-align: right">
+                @*<img src="@Url.Content("~/assets/images/logo.png")" class="img-responsive" alt="logo"/>*@
+            </div>
+        </div>                
+    </div>
+</div>

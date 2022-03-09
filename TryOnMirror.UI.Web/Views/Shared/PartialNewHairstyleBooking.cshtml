@@ -1,0 +1,25 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.NewHairstyleBookingModel
+
+@using (Html.BeginForm("new-hairstyle-booking", "booking", FormMethod.Post, new {id="haistyleBookingForm", 
+    @class = "form-inline" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    @Html.HiddenFor(x => x.Hook)
+    @Html.HiddenFor(x => x.HairstyleFileName)
+    @Html.HiddenFor(x => x.PhotoFileName)
+    @Html.HiddenFor(x => x.ImageData)
+
+    @Html.TextBox("BookingDate", "", new {placeholder = "DD/MM/YYY HH:MM TT", value = ""})
+
+    <div class="controls">
+        @Html.TextAreaFor(x => x.Note, new {cols = 7, row = 2, placeholder = "Message"})
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-small">Book</button>
+            </div>
+    </div>
+}

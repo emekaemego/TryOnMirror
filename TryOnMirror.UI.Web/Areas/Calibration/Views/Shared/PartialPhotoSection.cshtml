@@ -1,0 +1,77 @@
+﻿@model string[]
+
+@*<p style="border-top: 2px solid #333; padding-top: 10px;">
+    <a href="#" id="uploadPhoto" class="btn">Upload new photo</a>
+    <input id="ImageFile" data-url="@Url.Action("trace-new-model", "trace", new {area="VirtualMakeover"})" type="file" name="ImageFile" class="hide" />
+</p>
+
+<ul class="model-photos">
+    @foreach(var m in Model)
+    {
+        @Html.Partial("PartialModelPhoto", m)
+    }
+</ul>*@
+
+<div class="col-sm-5" style="padding-bottom: 15px;">
+    <div class="upload-instruction">
+        <h4 class="headline clearfix"><span>Trace New Photo</span></h4>
+
+        <div>
+            <p class="lead">
+                Upload from your computer 
+                <a href="#" class="btn btn-sm btn-primary" id="uploadPhoto" style="margin-left: 15px;">Upload</a>
+                <input id="ImageFile" data-name="userPhoto" type="file" name="ImageFile" class="hide"
+                    data-url="@Url.Action("trace-new-model", "trace", new {area="VirtualMakeover"})" />
+            </p>
+            <div class="busy">
+                <img src="@Url.Content("~/assets/images/preloader-w8-line-black.gif")" alt="loading..." width="110" height="10"/>
+            </div>
+                
+            Please follow the below instructions to obtain best results.
+        </div>
+
+        <ul>
+            <li>Use a high resolution, straight facing photo.</li>
+            <li>Image should be in JPG, GIF or PNG format.</li>
+            <li>Face without make-up and hair away from face.</li>
+            <li>Picture size should be atleast 300 x 300 pixels.</li>
+            <li>Bright and evenly lit photo</li>
+            <li>Avoid web cam or low quality pictures</li>
+        </ul>
+        
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="good-photo">
+                <h4>Good photo</h4>
+                <img src="@Url.Content("~/assets/images/good-photo-01.jpg")" alt="good photo"/>
+            </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="bad-photos">
+                    <h4>Bad photos</h4>
+                    <img src="@Url.Content("~/assets/images/bad-photo-01.jpg")" alt="bad photo"/>
+                    <img src="@Url.Content("~/assets/images/bad-photo-02.jpg")" alt="bad photo"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-1">
+    <h4 style="padding-left: 15px;">Or</h4>
+</div>
+
+<div class="col-sm-5">
+    <div class="traced-photos">
+        <h4 class="headline clearfix"><span>Select a Model</span></h4>
+        
+        <div class="row model-photos">        
+            @foreach(var m in Model)
+            {
+                @Html.Partial("PartialModelPhoto", m)
+            }
+        </div>
+
+    </div>
+</div>

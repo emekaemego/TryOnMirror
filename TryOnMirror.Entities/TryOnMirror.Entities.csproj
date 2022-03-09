@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1DA80212-3948-4674-8677-4596DC8E0636}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SymaCord.TryOnMirror.Entities</RootNamespace>
+    <AssemblyName>TryOnMirror.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+    <OutputPath>bin\Beta\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingStatus.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandCategories.cs" />
+    <Compile Include="HairBookingStatus.cs" />
+    <Compile Include="CustomBooking.cs" />
+    <Compile Include="CalibratedHair.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentType.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactLens.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coord.cs" />
+    <Compile Include="CvResult.cs" />
+    <Compile Include="CvSearchCoordsResult.cs" />
+    <Compile Include="CvEyeballResult.cs" />
+    <Compile Include="CvSearchResult.cs" />
+    <Compile Include="Glass.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GlassCategory.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HairCategory.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HairColor.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hairstyle.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HairstyleBooking.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCategory.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Membership.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OAuthMembership.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Salon.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFeatureId.cs" />
+    <Compile Include="SharedMakeover.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TracedPhoto.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TryOnMirrorEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TryOnMirrorEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TryOnMirrorEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TryOnMirrorEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="TryOnMirrorEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TryOnMirrorEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TryOnMirrorEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TryOnMirrorEntities.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

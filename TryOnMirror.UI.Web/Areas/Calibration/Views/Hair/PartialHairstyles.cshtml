@@ -1,0 +1,22 @@
+﻿@using SymaCord.TryOnMirror.UI.Web.Utils
+@model PagedList.StaticPagedList<string>
+
+<ul class="hairstyles">
+    @foreach(var m in Model)
+    {
+        <li>
+            <a href="@Url.Action("try-on-hairstyle","hair",new{fn=m, area="VirtualMakeover"})" class="retrace">
+                <img src="@Html.HairstyleImage(m, true)" />
+            </a>
+
+            <p>
+                <a href="@Url.Action("edit","hair",new{fn=m})">Edit</a> | 
+                <a href="@Url.Action("delete", new{fn=m})" class="delete-li" 
+                    data-delete-message="Are you sure you want to delete this hairstyle?">Delete</a>
+            </p>
+        </li>
+    }
+</ul>
+
+@Html.PagedListPager(Model, p => Url.Action("index", new { p, s = Request.QueryString["s"], pgr=true }), 
+PagedListRenderOptions.OnlyShowFivePagesAtATime)

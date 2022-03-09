@@ -1,0 +1,18 @@
+﻿@{
+    //ViewBag.Title = "_Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (IsSectionDefined("scripts"))
+{
+    DefineSection("scripts", () => Write(RenderSection("scripts")));
+}
+
+<ul class="sub-menu">
+    <li><a class="first" href="#">Trace photo</a></li>
+    <li><a href="#">Hair</a></li>
+    <li><a href="#">Head wears</a></li>
+    <li><a href="#">Eyes</a></li>
+</ul>
+
+@RenderBody()

@@ -1,0 +1,41 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.AddressModel
+
+<div class="span8">
+    @using (Html.BeginForm("edit-address", "salon", FormMethod.Post, new { @class = "form-horizontal", data_form_type = "edit" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(x=>x.Hook)
+
+        <fieldset>
+            <legend>Contact Info</legend>
+            
+            <div class="control-group">
+                @*<span class="help-block">Specify your Salon's address</span>*@
+                @Html.LabelFor(x => x.AddressLine1, new {@class = "control-label"})
+                <div class="controls">
+                    @Html.TextBoxFor(x => x.AddressLine1, new {placeholder = "Address", @class = "span6"})
+                    @Html.ValidationMessageFor(x => x.AddressLine1)
+                </div>
+            </div>
+
+            <div class="controls controls-row">
+                <span style="display: block; overflow: hidden;">
+                    @Html.TextBoxFor(x => x.City, new {@class = "span3", placeholder = "City"})
+                    @Html.TextBoxFor(x => x.State, new {@class = "span3", placeholder = "State"})
+                </span>
+
+                <span style="display: block; padding-top: 0; margin-top: 0;">
+                    @Html.ValidationMessageFor(x => x.City) <br />
+                    @Html.ValidationMessageFor(x => x.State)
+                </span>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

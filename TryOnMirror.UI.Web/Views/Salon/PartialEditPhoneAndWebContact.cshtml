@@ -1,0 +1,39 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.PhoneAndWebContactModel
+
+<div class="span8">
+    @using (Html.BeginForm("edit-phone-web-contact", "salon", FormMethod.Post, 
+                           new { @class = "form-horizontal", data_form_type = "edit" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(x=>x.Hook)
+
+        <fieldset>
+            <legend>Phone and Web Contacts</legend>
+            
+            <div class="controls controls-row">
+                <p style="display: block; overflow: hidden;">
+                @Html.TextBoxFor(x => x.PhoneNumber, new {@class = "span6", placeholder = "Phone Numbers"})
+                @Html.ValidationMessageFor(x => x.PhoneNumber)
+            </div>
+            
+            <div class="controls controls-row">
+                <span style="display: block; overflow: hidden;">
+                    @Html.TextBoxFor(x => x.Email, new {@class = "span3", placeholder = "Email"})
+                    @Html.TextBoxFor(x => x.Website, new {@class = "span3", placeholder = "Website"})
+                </span>
+
+                <span style="display: block; padding-top: 0; margin-top: 0;">
+                    @Html.ValidationMessageFor(x => x.Website) <br />
+                    @Html.ValidationMessageFor(x => x.Email)
+                </span>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

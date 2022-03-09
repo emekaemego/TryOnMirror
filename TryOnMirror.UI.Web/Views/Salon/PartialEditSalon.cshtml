@@ -1,0 +1,35 @@
+﻿@model SymaCord.TryOnMirror.UI.Web.ViewModels.EditSalonModel
+
+<div class="span8">
+    @using (Html.BeginForm("edit-info", "salon", FormMethod.Post, new { @class = "form-horizontal", data_form_type="edit" }))
+    {
+        
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(x=>x.Hook)
+
+        <fieldset>
+            <legend>Salon Info</legend>
+            
+            <div class="control-group">
+                @Html.LabelFor(x=>x.SalonName, new{@class="control-label"})
+                <div class="controls">
+                    @Html.TextBoxFor(x=>x.SalonName, new{placeholder="Salon Name"})
+                    @Html.ValidationMessageFor(x=>x.SalonName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(x=>x.About, new{@class="control-label"})
+                <div class="controls">
+                    @Html.TextAreaFor(x=>x.About, new{@class="span6", placeholder="About your salon"})
+                    @Html.ValidationMessageFor(x=>x.About)
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

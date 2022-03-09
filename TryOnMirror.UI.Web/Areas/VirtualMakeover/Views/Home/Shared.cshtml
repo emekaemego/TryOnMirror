@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My makeover from TryOn Mirror</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" style="text-align: center;">
+            <a href="@Url.Action("index")">
+                <img src="@Html.SharedMakeoverImage(ViewBag.FileName as string)" alt="Try on mirror virtual makeover" 
+                    class="img-responsive"/>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

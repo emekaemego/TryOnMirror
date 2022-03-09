@@ -1,0 +1,14 @@
+﻿@model DateTime?
+
+@{
+    string value = string.Empty;
+
+    if (Model.HasValue && Model.Value == DateTime.MinValue){
+        value = string.Empty;
+    }
+    else if (Model.HasValue){
+        value = Model.Value.ToShortDateString();
+    }
+}
+
+@Html.TextBox("", value, new {@class="date"})
